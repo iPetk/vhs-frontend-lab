@@ -13,7 +13,7 @@ export default function VHSDetails({}) {
   const [vhsInfo, setVhsInfo] = useState<VHS>()
 
   const fetchSingleVHS = async () => {
-    const response = await axios.get(`http://localhost:3000/api/vhs/${vhsId}`);
+    const response = await axios.get(`/api/vhs/${vhsId}`);
     setVhsInfo(response.data);
     console.log(response.data);
     console.log(vhsInfo, "info")

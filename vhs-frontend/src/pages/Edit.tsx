@@ -20,13 +20,13 @@ export default function Edit() {
   const exploreLink = useNavigate();
 
   const editEntry = async () => {
-    const response = await axios.patch(`http://localhost:3000/api/vhs/${VHS.id}`, editableVHS)
+    const response = await axios.patch(`/api/vhs/${VHS.id}`, editableVHS)
     .then(response => console.log(response))
     .catch(error => console.error(error));
   }
 
   const deleteEntry = async () => {
-    const response = await axios.delete(`http://localhost:3000/api/vhs/${VHS.id}`, editableVHS)
+    const response = await axios.delete(`/api/vhs/${VHS.id}`, editableVHS)
     .then(response => console.log(response))
     .catch(error => console.error(error));
     exploreLink("/explore");
@@ -46,6 +46,16 @@ export default function Edit() {
     // validateField(event.target.id, event.target.value);
   }
 
+  const handleFileChange = (event: any) => {
+    const file = event.target.files[0];
+    setEditableVHS({
+      ...editableVHS, 
+      [event.target.thumbnail]: file
+    })
+    console.log(editableVHS)
+  }
+
+
   // function validateField(field: string, value: any) {
     
   // }
@@ -60,7 +70,7 @@ export default function Edit() {
 
       <button onClick={deleteEntry}>Delete</button>
 
-      <VhsForm handleChange={handleChange} handleSubmit={handleSubmit} values={editableVHS}/>
+      <VhsForm handleChange={handleChange} handleSubmit={handleSubmit} handleFileChange={handleFileChange} values={editableVHS}/>
     </>
   )
 } 

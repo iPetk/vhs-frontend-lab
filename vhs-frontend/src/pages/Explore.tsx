@@ -17,7 +17,7 @@ export default function Explore({}: Props) {
   }, [])
 
   const getVhsList = async () => {
-    const response = await axios.get('http://localhost:3000/api/vhs');
+    const response = await axios.get('/api/vhs');
     setVhsList(response.data);
     console.log(response.data);
   }
@@ -25,7 +25,7 @@ export default function Explore({}: Props) {
     <div>Explore
       {vhsList.map(item => (
         item.id&&
-        <VhsThumbnail key={item.id} image={item.thumbnail ? item.thumbnail : placeholder} vhsId={item.id} vhsTitle={item.title} clickable/>
+        <VhsThumbnail key={item.id} image={item.thumbnail ? item.thumbnail.replace(/\\/g, "/") : placeholder} vhsId={item.id} vhsTitle={item.title} clickable/>
       ))}
     </div>
   )
