@@ -2,39 +2,45 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { VHS } from '../types'
 import VhsForm from '../components/VhsForm'
+import { useLocation, redirect, useNavigate } from 'react-router-dom';
+// import {Popup} from '../components/DeletePopup'
 
-type Props = {}
 
-export default function Edit({}: Props) {
-  const initialEntry: VHS =   {
-    title:	'',
-    description:	'',
-    genre:	'',
-    duration:	0,
-    releasedAt:	0,
-    rentalPrice:	0,
-    rentalDuration:	0,
-    thumbnail:	undefined
-  }
 
-  const [newVHS, setNewVHS] = useState(initialEntry)
+
+
+
+export default function Edit() {
+
+  const VHS  = useLocation().state
+
+  const [editableVHS, setEditableVHS] = useState(VHS)
   const[validationError, setValidationError] = useState(true);
+  const [open, setOpen] = useState(false);
+  const exploreLink = useNavigate();
 
-  const createNewEntry = async () => {
-    const response = await axios.post('http://localhost:3000/api/vhs', newVHS)
+  const editEntry = async () => {
+    const response = await axios.patch(`http://localhost:3000/api/vhs/${VHS.id}`, editableVHS)
     .then(response => console.log(response))
     .catch(error => console.error(error));
   }
 
+  const deleteEntry = async () => {
+    const response = await axios.delete(`http://localhost:3000/api/vhs/${VHS.id}`, editableVHS)
+    .then(response => console.log(response))
+    .catch(error => console.error(error));
+    exploreLink("/explore");
+  }
+
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    createNewEntry();
-    console.log(newVHS)
+    editEntry();
+    console.log(editableVHS)
   }
 
   const handleChange = (event: any) => {
-    setNewVHS({
-      ...newVHS, 
+    setEditableVHS({
+      ...editableVHS, 
       [event.target.id]: event.target.value
     })
     // validateField(event.target.id, event.target.value);
@@ -46,9 +52,15 @@ export default function Edit({}: Props) {
 
   return (
     <>
-      <h1>CreateNew</h1>
+      <h1>Edit</h1>
+      {/* <div>
+        <button onClick={() => setOpen(true)}>DELETE</button>
+        {open ? <Popup text="Are you sure you want to delete? This action is irreversible" closePopup={() => setOpen(false)} doPopupAction={deleteEntry} /> : null}
+      </div> */}
 
-      <VhsForm handleChange={handleChange} handleSubmit={handleSubmit}/>
+      <button onClick={deleteEntry}>Delete</button>
+
+      <VhsForm handleChange={handleChange} handleSubmit={handleSubmit} values={editableVHS}/>
     </>
   )
 } 

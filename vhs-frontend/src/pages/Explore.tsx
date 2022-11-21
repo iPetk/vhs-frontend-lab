@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { VHS } from '../types'
+import VhsThumbnail from '../components/VHSThumbnail'
+// @ts-ignore 
+import placeholder from '../assets/placeholder.webp';
 
 type Props = {}
 
 
 export default function Explore({}: Props) {
-  const [vhsList, setVhsList] = useState([] as VHS[]);
+  const [vhsList, setVhsList] = useState<VHS[]>([]);
 
   useEffect (() => {
     getVhsList();
@@ -20,8 +23,9 @@ export default function Explore({}: Props) {
   }
   return (
     <div>Explore
-            {vhsList.map(item => (
-        <h1 key={item.id}>{item.title}</h1>
+      {vhsList.map(item => (
+        item.id&&
+        <VhsThumbnail key={item.id} image={item.thumbnail ? item.thumbnail : placeholder} vhsId={item.id} vhsTitle={item.title} clickable/>
       ))}
     </div>
   )
