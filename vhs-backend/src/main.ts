@@ -6,12 +6,10 @@ import { join } from 'path';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const cors = require('cors');
-
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setGlobalPrefix('api');
   app.useStaticAssets(join(__dirname, '..', 'public'), { prefix: '/public/' });
-app.use(cors())
+
   const config = new DocumentBuilder()
     .setTitle('True North VHS API')
     .setDescription('True North VHS API Overview')
