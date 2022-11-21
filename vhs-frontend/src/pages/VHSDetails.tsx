@@ -3,7 +3,7 @@ import { VHS } from '../types'
 
 type Props = {}
 
-export default function VHS({}: Props) {
+export default function VHSDetails({}: Props) {
   return (
     <div>VHS</div>
   )
