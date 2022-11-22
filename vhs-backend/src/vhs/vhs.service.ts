@@ -59,7 +59,7 @@ export class VhsService {
     }
 
     await this.vhsRepository.delete(id);
-    if(thumbnail){
+    if(vhs.thumbnail){
       fs.unlink(vhs.thumbnail, (error) => {
         if (error) {
           throw error;
