@@ -1,11 +1,13 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { VHS } from '../types'
+import { useNavigate } from 'react-router-dom';
 import VhsForm from '../components/VhsForm'
 
 
 
 export default function CreateNew() {
+  const exploreLink = useNavigate();
   const initialEntry: VHS =   {
     title:	'',
     description:	'',
@@ -29,7 +31,7 @@ export default function CreateNew() {
     .catch(error => console.error(error));
   }
 
-  const handleSubmit = (event: any) => {
+  const createData = () => {
     const data = new FormData();
     data.append("title", newVHS.title);
     data.append("description", newVHS.description);
@@ -39,12 +41,14 @@ export default function CreateNew() {
     data.append("rentalPrice", newVHS.rentalPrice.toString());
     data.append("rentalDuration", newVHS.rentalDuration.toString());
     if (newVHS.thumbnail) {data.append("thumbnail", newVHS.thumbnail)};
+    return data;
+  }
+
+  const handleSubmit = (event: any) => {
+    const data = createData()
     event.preventDefault();
     createNewEntry(data);
-    for (const pair of data.entries()) {
-      console.log(`${pair[0]}, ${pair[1]}`);
-    }
-   
+    exploreLink("/explore");
   }
 
   const handleChange = (event: any) => {
@@ -77,3 +81,7 @@ export default function CreateNew() {
     </>
   )
 } 
+
+function exploreLink(arg0: string) {
+  throw new Error('Function not implemented.')
+}

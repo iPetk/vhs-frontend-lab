@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { VHS } from '../types'
+// import { VHS } from '../types'
 import VhsForm from '../components/VhsForm'
-import { useLocation, redirect, useNavigate } from 'react-router-dom';
-// import {Popup} from '../components/DeletePopup'
+import { useLocation, useNavigate } from 'react-router-dom';
+ import {Popup} from '../components/DeletePopup'
 
 
 
@@ -15,8 +15,8 @@ export default function Edit() {
   const VHS  = useLocation().state
 
   const [editableVHS, setEditableVHS] = useState(VHS)
-  const[validationError, setValidationError] = useState(true);
-  const [open, setOpen] = useState(false);
+  // const[validationError, setValidationError] = useState(true);
+   const [open, setOpen] = useState(false);
   const exploreLink = useNavigate();
 
   const editEntry = async () => {
@@ -63,10 +63,9 @@ export default function Edit() {
   return (
     <>
       <h1>Edit</h1>
-      {/* <div>
-        <button onClick={() => setOpen(true)}>DELETE</button>
+      { <div>
         {open ? <Popup text="Are you sure you want to delete? This action is irreversible" closePopup={() => setOpen(false)} doPopupAction={deleteEntry} /> : null}
-      </div> */}
+      </div> }
 
       <button onClick={deleteEntry}>Delete</button>
 
