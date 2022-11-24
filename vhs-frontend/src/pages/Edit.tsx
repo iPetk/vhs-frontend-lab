@@ -3,11 +3,7 @@ import React, { useState } from 'react'
 // import { VHS } from '../types'
 import VhsForm from '../components/VhsForm'
 import { useLocation, useNavigate } from 'react-router-dom';
- import {Popup} from '../components/DeletePopup'
-
-
-
-
+import {Popup} from '../components/DeletePopup'
 
 
 export default function Edit() {

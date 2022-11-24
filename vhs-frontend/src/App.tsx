@@ -20,11 +20,12 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/notfound" element={<NotFound />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/:vhsId" element={<VHSDetails />} />
           <Route path="/edit" element={<Edit />} /> 
           <Route path="/create" element={<CreateNew />} />
-          <Route path="/*" element={<NotFound />} />
+
         </Routes>
       </main>
     </>
