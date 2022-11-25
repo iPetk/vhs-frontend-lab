@@ -6,10 +6,10 @@
 * Edit existing VHS
 * Delete existing VHS
 * Routing to specific VHS by ID
-
-### To do (features):
 * Display all movie details
 * Search
+
+### To do (features):
 * Input validation
 * Add feedback for user on creation, editing and deletion
 
