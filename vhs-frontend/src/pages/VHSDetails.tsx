@@ -1,44 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useParams, useNavigate } from 'react-router-dom'
-import { VHS } from '../types'
-import axios from 'axios'
-import Edit from './Edit'
-// @ts-ignore 
-import placeholder from '../assets/placeholder.webp';
+import React, { useEffect, useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { VHS } from "../types";
+import axios from "axios";
+import Edit from "./Edit";
+// @ts-ignore
+import placeholder from "../assets/placeholder.jpg";
 
-type Props = {}
+type Props = {};
 
 export default function VHSDetails({}) {
-
   function convertDuration(duration: number) {
-    const hours = Math.floor(duration/ 60);
+    const hours = Math.floor(duration / 60);
     const minutes = duration % 60;
 
-    return (`${hours}:${minutes}`)
+    return `${hours}:${minutes}`;
   }
   const { vhsId } = useParams();
   const notFoundLink = useNavigate();
 
-  const [vhsInfo, setVhsInfo] = useState<VHS>()
+  const [vhsInfo, setVhsInfo] = useState<VHS>();
 
   const fetchSingleVHS = async () => {
-    try{
+    try {
       const response = await axios.get(`/api/vhs/${vhsId}`);
       setVhsInfo(response.data);
     } catch (err) {
       console.log(err);
       notFoundLink("/notfound");
-
     }
-  }
+  };
 
   useEffect(() => {
-    fetchSingleVHS()
-  }, [])
+    fetchSingleVHS();
+  }, []);
 
   return (
     <div>
-      {vhsInfo && 
+      {vhsInfo && (
         <div>
           <h1>{vhsInfo.title}</h1>
           <div>Description: {vhsInfo.description}</div>
@@ -46,13 +44,20 @@ export default function VHSDetails({}) {
           <div>Genre: {vhsInfo.genre}</div>
           <div>Release year: {vhsInfo.releasedAt}</div>
           <div>Rental price: {vhsInfo.rentalPrice} coins</div>
-          <img src={vhsInfo.thumbnail? vhsInfo.thumbnail.replace(/\\/g, "/") : placeholder} alt=""/>
+          <img
+            src={
+              vhsInfo.thumbnail
+                ? vhsInfo.thumbnail.replace(/\\/g, "/")
+                : placeholder
+            }
+            alt=""
+          />
 
-          <Link to="/edit" state={ vhsInfo }>
+          <Link to="/edit" state={vhsInfo}>
             <button>EDIT</button>
           </Link>
-        </div>}
-
+        </div>
+      )}
     </div>
-  )
+  );
 }

@@ -1,15 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-
-type Props = {}
+type Props = {};
 
 export default function Home({}: Props) {
-
-
-  return (
-    <div>Home
-    </div>
-
-  )
+  return <div>Home</div>;
 }

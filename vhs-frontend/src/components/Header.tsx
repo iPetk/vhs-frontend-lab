@@ -1,13 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-type Props = {}
+type Props = {};
 
 export default function Header({}: Props) {
   return (
     <div>
       <Link to="/">Home</Link> <br />
       <Link to="/explore">Discovery</Link> <br />
+      <Link to="/create">Create new VHS</Link> <br />
     </div>
-  )
+  );
 }
