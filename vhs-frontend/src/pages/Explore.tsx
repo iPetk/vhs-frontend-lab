@@ -6,9 +6,7 @@ import SearchBar from "../components/SearchBar";
 // @ts-ignore
 import placeholder from "../assets/placeholder.jpg";
 
-type Props = {};
-
-export default function Explore({}: Props) {
+export default function Explore() {
   const [vhsList, setVhsList] = useState<VHS[]>([]);
   const [filteredList, setFilteredList] = useState<VHS[]>([]);
   const [searching, setSearching] = useState(false);
@@ -47,7 +45,6 @@ export default function Explore({}: Props) {
                   }
                   vhsId={item.id}
                   vhsTitle={item.title}
-                  clickable
                 />
               )
           )
@@ -63,7 +60,6 @@ export default function Explore({}: Props) {
                   }
                   vhsId={item.id}
                   vhsTitle={item.title}
-                  clickable
                 />
               )
           )}
