@@ -1,16 +1,8 @@
-import { z } from "zod";
+import { number, z } from "zod";
 
-export type VHS = {
-  id?: number;
-  title: string;
-  description: string;
-  genre: string;
-  duration: number;
-  releasedAt: number;
-  rentalPrice: number;
-  rentalDuration: number;
-  quantity?: number;
-  thumbnail?: string;
+export type VHS = VhsFormType & {
+  id: number;
+  quantity: number;
 };
 
 export const vhsFormSchema = z.object({
