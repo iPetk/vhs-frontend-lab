@@ -19,17 +19,17 @@ export default function CreateNew() {
     }
   };
 
-  const createData = (d: VhsFormType) => {
+  const createData = (formData: VhsFormType) => {
     const data = new FormData();
-    data.append("title", d.title);
-    data.append("description", d.description);
-    data.append("genre", d.genre);
-    data.append("duration", d.duration.toString());
-    data.append("releasedAt", d.releasedAt.toString());
-    data.append("rentalPrice", d.rentalPrice.toString());
-    data.append("rentalDuration", d.rentalDuration.toString());
-    if (d.thumbnail) {
-      data.append("thumbnail", d.thumbnail[0]);
+    data.append("title", formData.title);
+    data.append("description", formData.description);
+    data.append("genre", formData.genre);
+    data.append("duration", formData.duration.toString());
+    data.append("releasedAt", formData.releasedAt.toString());
+    data.append("rentalPrice", formData.rentalPrice.toString());
+    data.append("rentalDuration", formData.rentalDuration.toString());
+    if (formData.thumbnail) {
+      data.append("thumbnail", formData.thumbnail[0]);
     }
     return data;
   };
