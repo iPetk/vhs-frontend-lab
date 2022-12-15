@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const MAX_FILE_SIZE = 300000; //bytes
 const ACCEPTED_IMAGE_TYPES = [
-  "image/svg",
+  "image/svg+xml",
   "image/bmp",
   "image/jpeg",
   "image/jpg",
@@ -10,9 +10,10 @@ const ACCEPTED_IMAGE_TYPES = [
   "image/webp",
 ];
 
-export type VHS = VhsFormType & {
+export type VHS = Omit<VhsFormType, "thumbnail"> & {
   id: number;
   quantity: number;
+  thumbnail: string;
 };
 
 export const vhsFormSchema = z.object({
@@ -38,14 +39,14 @@ export const vhsFormSchema = z.object({
     .int()
     .positive("Rental duration must be greater than 1"),
   thumbnail: z
-    .any()
-    .optional()
+    .custom<FileList>()
     .refine((files) => files?.[0]?.size <= MAX_FILE_SIZE, {
       message: "Maximum file size is 3MB.",
     })
     .refine((files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type), {
-      message: "Image must be .bmp, .jpg, .jpeg, .png or .webp ",
-    }),
+      message: "Image must be .bmp, .jpg, .jpeg, .png, .svg or .webp ",
+    })
+    .optional(),
 });
 
 export type VhsFormType = z.infer<typeof vhsFormSchema>;
