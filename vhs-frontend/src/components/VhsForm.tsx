@@ -1,89 +1,71 @@
-import React from "react";
-import { VHS, validationFields } from "../types";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { VHS, vhsFormSchema, VhsFormType } from "../types";
 
 type Props = {
-  handleChange: any;
-  handleSubmit: any;
-  handleFileChange: any;
+  onSubmit: any;
   values?: VHS;
 };
 
-export default function VhsForm({
-  handleChange,
-  handleSubmit,
-  handleFileChange,
-  values,
-}: Props) {
+export const VhsForm = ({ onSubmit }: Props) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<VhsFormType>({
+    resolver: zodResolver(vhsFormSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+      genre: "",
+      duration: 0,
+      releasedAt: 0,
+      rentalPrice: 0,
+      rentalDuration: 0,
+    },
+  });
+
   return (
     <div>
-      VhsForm
-      <form encType="multipart/form-data" noValidate>
-        <input
-          type="text"
-          id="title"
-          value={values?.title}
-          placeholder="Title"
-          onChange={handleChange}
-          required
-        ></input>
-        <input
-          type="text"
-          id="description"
-          value={values?.description}
-          placeholder="Description"
-          onChange={handleChange}
-          required
-        ></input>
-        <input
-          type="text"
-          id="genre"
-          value={values?.genre}
-          placeholder="Genre"
-          onChange={handleChange}
-          required
-        ></input>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <p>Title</p>
+        <input {...register("title")} />
+        {errors.title && <span>{errors.title.message}</span>}
+        <p>Description</p>
+        <input {...register("description")} />
+        {errors.description && <span>{errors.description.message}</span>}
+        <p>Genre</p>
+        <input {...register("genre")} />
+        {errors.genre && <span>{errors.genre.message}</span>}
+        <p>Duration</p>
         <input
           type="number"
-          id="duration"
-          value={values?.duration}
-          placeholder="Duration in minutes"
-          onChange={handleChange}
-          required
-        ></input>
+          {...register("duration", { valueAsNumber: true })}
+        />
+        {errors.duration && <span>{errors.duration.message}</span>}
+        <p>Release year</p>
         <input
           type="number"
-          id="releasedAt"
-          value={values?.releasedAt}
-          placeholder="Release year"
-          onChange={handleChange}
-          required
-        ></input>
+          {...register("releasedAt", { valueAsNumber: true })}
+        />
+        {errors.releasedAt && <span>{errors.releasedAt.message}</span>}
+        <p>Rental price</p>
         <input
           type="number"
-          id="rentalPrice"
-          value={values?.rentalPrice}
-          placeholder="Price"
-          onChange={handleChange}
-          required
-        ></input>
+          {...register("rentalPrice", { valueAsNumber: true })}
+        />
+        {errors.rentalPrice && <span>{errors.rentalPrice.message}</span>}
+        <p>Rental duration</p>
         <input
           type="number"
-          id="rentalDuration"
-          value={values?.rentalDuration}
-          placeholder="How long will you be renting?"
-          onChange={handleChange}
-          required
-        ></input>
-        <input
-          type="file"
-          id="thumbnail"
-          placeholder=""
-          onChange={handleFileChange}
-        ></input>
-        <button type="submit" onClick={handleSubmit}>
-          SUBMIT ME
-        </button>
+          {...register("rentalDuration", { valueAsNumber: true })}
+        />
+        {errors.rentalDuration && <span>{errors.rentalDuration.message}</span>}
+        <p>Upload thumbnail</p>
+        <input type="file" {...register("thumbnail")} />
+        {errors.thumbnail && <span>Not good</span>}
+        <input type="submit" value="Submit" />
       </form>
     </div>
   );
-}
+};
