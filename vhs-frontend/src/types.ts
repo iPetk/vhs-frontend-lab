@@ -1,4 +1,14 @@
-import { number, z } from "zod";
+import { z } from "zod";
+
+const MAX_FILE_SIZE = 300000; //bytes
+const ACCEPTED_IMAGE_TYPES = [
+  "image/svg",
+  "image/bmp",
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
 
 export type VHS = VhsFormType & {
   id: number;
@@ -12,11 +22,13 @@ export const vhsFormSchema = z.object({
   duration: z
     .number({ invalid_type_error: "Duration must be a number" })
     .int()
-    .nonnegative("Duration can't be negative"),
+    .positive("Duration must be greater than 0"),
   releasedAt: z
     .number({ invalid_type_error: "Release date must be a number" })
     .int()
-    .nonnegative("Release date can't be negative"),
+    .gte(1880, "Please check this info - film wasn't invented until the 1880s")
+    .lte(2030, "Are you a time traveler?")
+    .nonnegative("Release year can't be negative"),
   rentalPrice: z
     .number({ invalid_type_error: "Price must be a number" })
     .int()
@@ -24,8 +36,16 @@ export const vhsFormSchema = z.object({
   rentalDuration: z
     .number({ invalid_type_error: "Rental duration must be a number" })
     .int()
-    .nonnegative("Rental duration can't be negative"),
-  thumbnail: z.any().optional(),
+    .positive("Rental duration must be greater than 1"),
+  thumbnail: z
+    .any()
+    .optional()
+    .refine((files) => files?.[0]?.size <= MAX_FILE_SIZE, {
+      message: "Maximum file size is 3MB.",
+    })
+    .refine((files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type), {
+      message: "Image must be .bmp, .jpg, .jpeg, .png or .webp ",
+    }),
 });
 
 export type VhsFormType = z.infer<typeof vhsFormSchema>;

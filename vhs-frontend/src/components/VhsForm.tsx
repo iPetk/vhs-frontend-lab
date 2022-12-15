@@ -63,7 +63,9 @@ export const VhsForm = ({ onSubmit, values }: Props) => {
         {errors.rentalDuration && <span>{errors.rentalDuration.message}</span>}
         <p>Upload thumbnail</p>
         <input type="file" {...register("thumbnail")} />
-        {errors.thumbnail && <span>Not good</span>}
+        {errors.thumbnail && (
+          <span>{errors.thumbnail.message?.toString()}</span>
+        )}
         <input type="submit" value="Submit" />
       </form>
     </div>
