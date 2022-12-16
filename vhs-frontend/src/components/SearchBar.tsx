@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { VHS } from "../types";
 
 type Props = {
@@ -29,8 +28,11 @@ export const SearchBar = ({
             item.description
               .toLowerCase()
               .includes(event.target.value.toLowerCase())
-          )
+          ) {
             return item;
+          }
+
+          return false;
         })
       );
     } else if (event.target.value === "") setSearching(false);

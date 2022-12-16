@@ -1,28 +1,21 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { VHS, vhsFormSchema, VhsFormType } from "../../types";
+import { buildDefaultValues } from "./defaultValuesConfig";
 
 type Props = {
-  onSubmit: (data: VhsFormType) => void;
   values?: VHS;
+  onSubmit: (data: VhsFormType) => void;
 };
 
-export const VhsForm = ({ onSubmit, values }: Props) => {
+export const VhsForm = ({ values, onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<VhsFormType>({
     resolver: zodResolver(vhsFormSchema),
-    defaultValues: {
-      title: values?.title || "",
-      description: values?.description || "",
-      genre: values?.genre || "",
-      duration: values?.duration || 0,
-      releasedAt: values?.releasedAt || 0,
-      rentalPrice: values?.rentalPrice || 0,
-      rentalDuration: values?.rentalDuration || 0,
-    },
+    defaultValues: buildDefaultValues(values),
   });
 
   return (
