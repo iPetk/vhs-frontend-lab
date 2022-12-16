@@ -5,13 +5,9 @@ import { VhsForm } from "../components/VhsForm";
 export const CreateNew = () => {
   const exploreLink = useNavigate();
 
-  const config = {
-    headers: { "Content-Type": "multipart/form-data" },
-  };
-
   const createNewEntry = async (data: FormData) => {
     try {
-      const response = await axios.post("/api/vhs", data, config);
+      const response = await axios.post("/api/vhs", data);
       console.log(response);
     } catch (error) {
       console.error(error);

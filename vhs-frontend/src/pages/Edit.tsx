@@ -10,13 +10,9 @@ export const Edit = () => {
   const [open, setOpen] = useState(false);
   const exploreLink = useNavigate();
 
-  const config = {
-    headers: { "Content-Type": "multipart/form-data" },
-  };
-
   const editEntry = async (data: FormData) => {
     try {
-      const response = await axios.patch(`/api/vhs/${VHS.id}`, data, config);
+      const response = await axios.patch(`/api/vhs/${VHS.id}`, data);
       console.log(response);
     } catch (error) {
       console.error(error);
