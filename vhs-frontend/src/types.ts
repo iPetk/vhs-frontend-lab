@@ -1,6 +1,8 @@
 import { z } from "zod";
 
 const MAX_FILE_SIZE = 300000; //bytes
+const RELEASE_YEAR_MIN = 1880;
+const RELEASE_YEAR_MAX = new Date().getFullYear();
 const ACCEPTED_IMAGE_TYPES = [
   "image/svg+xml",
   "image/bmp",
@@ -27,8 +29,11 @@ export const vhsFormSchema = z.object({
   releasedAt: z
     .number({ invalid_type_error: "Release date must be a number" })
     .int()
-    .gte(1880, "Please check this info - film wasn't invented until the 1880s")
-    .lte(2030, "Are you a time traveler?")
+    .gte(
+      RELEASE_YEAR_MIN,
+      "Please check this info - film wasn't invented until the 1880s"
+    )
+    .lte(RELEASE_YEAR_MAX, "Are you a time traveler?")
     .nonnegative("Release year can't be negative"),
   rentalPrice: z
     .number({ invalid_type_error: "Price must be a number" })
@@ -43,7 +48,7 @@ export const vhsFormSchema = z.object({
     .refine((files) => {
       if (!files.length) return true;
       return files[0].size <= MAX_FILE_SIZE;
-    }, "Max file size is 5MB.")
+    }, "Max file size is 3MB.")
     .refine(
       (files) => {
         if (!files.length) return true;
