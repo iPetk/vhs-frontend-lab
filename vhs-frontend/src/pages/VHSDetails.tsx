@@ -2,18 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { VHS } from "../types";
 import axios from "axios";
-import Edit from "./Edit";
 // @ts-ignore
 import placeholder from "../assets/placeholder.jpg";
 
-type Props = {};
-
-export default function VHSDetails({}) {
+export default function VHSDetails() {
   function convertDuration(duration: number) {
     const hours = Math.floor(duration / 60);
     const minutes = duration % 60;
 
-    return `${hours}:${minutes}`;
+    return `${hours} hours ${minutes} minutes`;
   }
   const { vhsId } = useParams();
   const notFoundLink = useNavigate();
@@ -32,6 +29,7 @@ export default function VHSDetails({}) {
 
   useEffect(() => {
     fetchSingleVHS();
+    // eslint-disable-next-line
   }, []);
 
   return (

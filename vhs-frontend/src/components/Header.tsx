@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-type Props = {};
-
-export default function Header({}: Props) {
+export default function Header() {
   return (
     <div>
       <Link to="/">Home</Link> <br />
