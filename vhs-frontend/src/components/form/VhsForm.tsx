@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { VHS, vhsFormSchema, VhsFormType } from "../types";
+import { VHS, vhsFormSchema, VhsFormType } from "../../types";
 
 type Props = {
   onSubmit: any;
@@ -25,24 +25,9 @@ export const VhsForm = ({ onSubmit, values }: Props) => {
     },
   });
 
-  const createData = (formData: VhsFormType) => {
-    const data = new FormData();
-    data.append("title", formData.title);
-    data.append("description", formData.description);
-    data.append("genre", formData.genre);
-    data.append("duration", formData.duration.toString());
-    data.append("releasedAt", formData.releasedAt.toString());
-    data.append("rentalPrice", formData.rentalPrice.toString());
-    data.append("rentalDuration", formData.rentalDuration.toString());
-    if (formData.thumbnail) {
-      data.append("thumbnail", formData.thumbnail[0]);
-    }
-    onSubmit(data);
-  };
-
   return (
     <div>
-      <form onSubmit={handleSubmit(createData)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <p>Title</p>
         <input {...register("title")} />
         {errors.title && <span>{errors.title.message}</span>}

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { VhsForm } from "../components/VhsForm";
+import { VhsForm } from "../components/form/VhsForm";
+import { createData } from "../components/form/CreateData";
+import { VhsFormType } from "../types";
 
 export const CreateNew = () => {
   const exploreLink = useNavigate();
@@ -14,9 +16,9 @@ export const CreateNew = () => {
     }
   };
 
-  const submitForm = (data: FormData) => {
+  const submitForm = (data: VhsFormType) => {
     console.log(data);
-    createNewEntry(data);
+    createNewEntry(createData(data));
     exploreLink("/explore");
   };
 
