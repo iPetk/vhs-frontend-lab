@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { VHS } from "../types";
 
 type Props = {
@@ -7,11 +6,11 @@ type Props = {
   setSearching: Function;
 };
 
-export default function SearchBar({
+export const SearchBar = ({
   searchBase,
   setFilteredList,
   setSearching,
-}: Props) {
+}: Props) => {
   // const [searchQuery, setSearchQuery] = useState('');
 
   //TODO: move this to explore
@@ -29,8 +28,11 @@ export default function SearchBar({
             item.description
               .toLowerCase()
               .includes(event.target.value.toLowerCase())
-          )
+          ) {
             return item;
+          }
+
+          return false;
         })
       );
     } else if (event.target.value === "") setSearching(false);
@@ -38,7 +40,10 @@ export default function SearchBar({
 
   return (
     <div>
-      <input type="search" onChange={handleChange} placeholder={"Start typing to search"}></input>
+      <input
+        type="search"
+        onChange={handleChange}
+        placeholder={"Start typing to search"}></input>
     </div>
   );
-}
+};

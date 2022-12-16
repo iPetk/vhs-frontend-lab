@@ -1,22 +1,21 @@
 import axios from "axios";
-import React, { useState } from "react";
-// import { VHS } from '../types'
-import VhsForm from "../components/VhsForm";
+import { useState } from "react";
+import { VhsForm } from "../components/form/VhsForm";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Popup } from "../components/DeletePopup";
+import { createData } from "../components/form/CreateData";
+import { VhsFormType } from "../types";
 
-export default function Edit() {
+export const Edit = () => {
   const VHS = useLocation().state;
 
-  const [editableVHS, setEditableVHS] = useState(VHS);
-  // const[validationError, setValidationError] = useState(true);
   const [open, setOpen] = useState(false);
   const exploreLink = useNavigate();
 
-
-  const editEntry = async () => {
+  const editEntry = async (data: FormData) => {
     try {
-      const response = await axios.patch(`/api/vhs/${VHS.id}`, editableVHS);
+      const response = await axios.patch(`/api/vhs/${VHS.id}`, data);
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -24,39 +23,19 @@ export default function Edit() {
 
   const deleteEntry = async () => {
     try {
-      const response = await axios.delete(`/api/vhs/${VHS.id}`, editableVHS);
+      const response = await axios.delete(`/api/vhs/${VHS.id}`);
+      console.log(response);
+      exploreLink("/explore");
     } catch (error) {
       console.error(error);
       exploreLink("/explore");
     }
   };
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    editEntry();
-    console.log(editableVHS);
+  const handleSubmit = (data: VhsFormType) => {
+    console.log(data);
+    editEntry(createData(data));
   };
-
-  const handleChange = (event: any) => {
-    setEditableVHS({
-      ...editableVHS,
-      [event.target.id]: event.target.value,
-    });
-    // validateField(event.target.id, event.target.value);
-  };
-
-  const handleFileChange = (event: any) => {
-    const file = event.target.files[0];
-    setEditableVHS({
-      ...editableVHS,
-      [event.target.thumbnail]: file,
-    });
-    console.log(editableVHS);
-  };
-
-  // function validateField(field: string, value: any) {
-
-  // }
 
   return (
     <>
@@ -67,15 +46,18 @@ export default function Edit() {
             <Popup
               text="Are you sure you want to delete? This action is irreversible"
               closePopup={() => setOpen(false)}
-              doPopupAction={deleteEntry}
+              doPopupAction={() => {
+                deleteEntry();
+                setOpen(false);
+              }}
             />
           ) : null}
         </div>
       }
 
-      <button onClick={deleteEntry}>Delete</button>
+      <button onClick={() => setOpen(true)}>Delete</button>
 
-       <VhsForm handleChange={handleChange} handleSubmit={handleSubmit} handleFileChange={handleFileChange} values={editableVHS}/> 
+      <VhsForm onSubmit={handleSubmit} values={VHS} />
     </>
   );
-}
+};

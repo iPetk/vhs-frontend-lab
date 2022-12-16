@@ -96,11 +96,13 @@ export class VhsRepository extends Repository<Vhs> {
     if (quantity) vhs.quantity = quantity;
 
     if (thumbnail) {
-      fs.unlink(vhs.thumbnail, (error) => {
-        if (error) {
-          throw error;
-        }
-      });
+      if (vhs.thumbnail) {
+        fs.unlink(vhs.thumbnail, (error) => {
+          if (error) {
+            throw error;
+          }
+        });
+      }
 
       vhs.thumbnail = thumbnail.path;
     }

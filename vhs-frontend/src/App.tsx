@@ -1,19 +1,15 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
-
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import Explore from "./pages/Explore";
-import VHSDetails from "./pages/VHSDetails";
-import Edit from "./pages/Edit";
-import CreateNew from "./pages/CreateNew";
-import NotFound from "./pages/NotFound";
-
-import { VHS } from "./types";
+import { Header } from "./components/Header";
+import { Home } from "./pages/Home";
+import { Explore } from "./pages/Explore";
+import { VHSDetails } from "./pages/VHSDetails";
+import { Edit } from "./pages/Edit";
+import { CreateNew } from "./pages/CreateNew";
+import { NotFound } from "./pages/NotFound";
 
 import "./App.css";
 
-function App() {
+export const App = () => {
   return (
     <>
       <Header />
@@ -29,6 +25,4 @@ function App() {
       </main>
     </>
   );
-}
-
-export default App;
+};
