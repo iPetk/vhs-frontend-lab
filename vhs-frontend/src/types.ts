@@ -40,12 +40,19 @@ export const vhsFormSchema = z.object({
     .positive("Rental duration must be greater than 1"),
   thumbnail: z
     .custom<FileList>()
-    .refine((files) => files?.[0]?.size <= MAX_FILE_SIZE, {
-      message: "Maximum file size is 3MB.",
-    })
-    .refine((files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type), {
-      message: "Image must be .bmp, .jpg, .jpeg, .png, .svg or .webp ",
-    })
+    .refine((files) => {
+      if (!files.length) return true;
+      return files[0].size <= MAX_FILE_SIZE;
+    }, "Max file size is 5MB.")
+    .refine(
+      (files) => {
+        if (!files.length) return true;
+        return ACCEPTED_IMAGE_TYPES.includes(files[0].type);
+      },
+      {
+        message: "Image must be .bmp, .jpg, .jpeg, .png, .svg or .webp ",
+      }
+    )
     .optional(),
 });
 
