@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { VHS, vhsFormSchema, VhsFormType } from "../../types";
 
 type Props = {
-  onSubmit: any;
+  onSubmit: (data: VhsFormType) => void;
   values?: VHS;
 };
 
