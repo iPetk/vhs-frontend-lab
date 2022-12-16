@@ -5,13 +5,13 @@ import axios from "axios";
 // @ts-ignore
 import placeholder from "../assets/placeholder.jpg";
 
-export default function VHSDetails() {
-  function convertDuration(duration: number) {
+export const VHSDetails = () => {
+  const convertDuration = (duration: number) => {
     const hours = Math.floor(duration / 60);
     const minutes = duration % 60;
 
     return `${hours} hours ${minutes} minutes`;
-  }
+  };
   const { vhsId } = useParams();
   const notFoundLink = useNavigate();
 
@@ -58,4 +58,4 @@ export default function VHSDetails() {
       )}
     </div>
   );
-}
+};

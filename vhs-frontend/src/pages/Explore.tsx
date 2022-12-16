@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { VHS } from "../types";
-import VhsThumbnail from "../components/VHSThumbnail";
-import SearchBar from "../components/SearchBar";
+import { VhsThumbnail } from "../components/VHSThumbnail";
+import { SearchBar } from "../components/SearchBar";
 // @ts-ignore
 import placeholder from "../assets/placeholder.jpg";
 
-export default function Explore() {
+export const Explore = () => {
   const [vhsList, setVhsList] = useState<VHS[]>([]);
   const [filteredList, setFilteredList] = useState<VHS[]>([]);
   const [searching, setSearching] = useState(false);
@@ -65,4 +65,4 @@ export default function Explore() {
           )}
     </div>
   );
-}
+};

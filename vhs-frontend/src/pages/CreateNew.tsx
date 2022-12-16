@@ -2,7 +2,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { VhsForm } from "../components/VhsForm";
 
-export default function CreateNew() {
+export const CreateNew = () => {
   const exploreLink = useNavigate();
 
   const config = {
@@ -30,4 +30,4 @@ export default function CreateNew() {
       <VhsForm onSubmit={submitForm} />
     </>
   );
-}
+};

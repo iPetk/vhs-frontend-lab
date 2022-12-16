@@ -4,7 +4,7 @@ import { VhsForm } from "../components/VhsForm";
 import { useLocation, useNavigate, redirect } from "react-router-dom";
 import { Popup } from "../components/DeletePopup";
 
-export default function Edit() {
+export const Edit = () => {
   const VHS = useLocation().state;
 
   const [open, setOpen] = useState(false);
@@ -63,4 +63,4 @@ export default function Edit() {
       <VhsForm onSubmit={handleSubmit} values={VHS} />
     </>
   );
-}
+};

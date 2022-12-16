@@ -7,11 +7,11 @@ type Props = {
   setSearching: Function;
 };
 
-export default function SearchBar({
+export const SearchBar = ({
   searchBase,
   setFilteredList,
   setSearching,
-}: Props) {
+}: Props) => {
   // const [searchQuery, setSearchQuery] = useState('');
 
   //TODO: move this to explore
@@ -38,7 +38,10 @@ export default function SearchBar({
 
   return (
     <div>
-      <input type="search" onChange={handleChange} placeholder={"Start typing to search"}></input>
+      <input
+        type="search"
+        onChange={handleChange}
+        placeholder={"Start typing to search"}></input>
     </div>
   );
-}
+};

@@ -6,7 +6,7 @@ type Props = {
   vhsTitle: string;
 };
 
-export default function VhsThumbnail({ image, vhsId, vhsTitle }: Props) {
+export const VhsThumbnail = ({ image, vhsId, vhsTitle }: Props) => {
   return (
     <div style={{ border: "1px solid black", width: "300px" }}>
       <Link to={`/${vhsId}`}>
@@ -17,4 +17,4 @@ export default function VhsThumbnail({ image, vhsId, vhsTitle }: Props) {
       </Link>
     </div>
   );
-}
+};
