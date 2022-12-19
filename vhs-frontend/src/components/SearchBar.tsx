@@ -1,49 +1,52 @@
-import { VHS } from "../types";
+import { FormEvent, useState } from 'react';
 
-type Props = {
-  searchBase: VHS[];
-  setFilteredList: Function;
-  setSearching: Function;
-};
+interface Props {
+  setQuery: (value: string) => void;
+}
+export const SearchBar = ({ setQuery }: Props) => {
+  const [inputVal, setInputVal] = useState('');
+  const [queryType, setQueryType] = useState('title');
 
-export const SearchBar = ({
-  searchBase,
-  setFilteredList,
-  setSearching,
-}: Props) => {
-  // const [searchQuery, setSearchQuery] = useState('');
+  const changeType = (e: any) => {
+    setQueryType(e.target.value);
+  };
 
-  //TODO: move this to explore
-  const handleChange = (event: any) => {
-    // setSearchQuery(event.target.value)
-    // console.log(searchQuery)
-    if (event.target.value !== "") {
-      setSearching(true);
-      setFilteredList(
-        searchBase.filter((item) => {
-          if (
-            item.title
-              .toLowerCase()
-              .includes(event.target.value.toLowerCase()) ||
-            item.description
-              .toLowerCase()
-              .includes(event.target.value.toLowerCase())
-          ) {
-            return item;
-          }
+  const changeText = (e: any) => {
+    setInputVal(e.target.value);
+  };
 
-          return false;
-        })
-      );
-    } else if (event.target.value === "") setSearching(false);
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const query = `?${queryType}=${inputVal}`;
+    setQuery(query);
+  };
+
+  const reset = () => {
+    setInputVal('');
+    setQuery('');
   };
 
   return (
     <div>
-      <input
-        type="search"
-        onChange={handleChange}
-        placeholder={"Start typing to search"}></input>
+      <form onSubmit={handleSubmit}>
+        <select onChange={changeType}>
+          <option value="title">Title</option>
+          <option value="description">Description</option>
+          <option value="genre">Genre</option>
+        </select>
+        <input
+          type="search"
+          placeholder={'Start typing to search'}
+          onChange={changeText}
+          value={inputVal}
+        ></input>
+        <button type="submit" disabled={!inputVal}>
+          Search
+        </button>
+        <button type="button" onClick={reset}>
+          Reset
+        </button>
+      </form>
     </div>
   );
 };
