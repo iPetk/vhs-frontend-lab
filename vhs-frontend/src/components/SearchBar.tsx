@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, ChangeEvent } from 'react';
 
 interface Props {
   setQuery: (value: string) => void;
@@ -7,11 +7,11 @@ export const SearchBar = ({ setQuery }: Props) => {
   const [inputVal, setInputVal] = useState('');
   const [queryType, setQueryType] = useState('title');
 
-  const changeType = (e: any) => {
+  const changeType = (e: ChangeEvent<HTMLSelectElement>) => {
     setQueryType(e.target.value);
   };
 
-  const changeText = (e: any) => {
+  const changeText = (e: ChangeEvent<HTMLInputElement>) => {
     setInputVal(e.target.value);
   };
 
