@@ -14,17 +14,21 @@ export class VhsRepository extends Repository<Vhs> {
     const query = this.createQueryBuilder('vhs');
 
     if (title) {
-      query.andWhere('vhs.title LIKE :title', { title: `%${title}%` });
+      query.andWhere('LOWER(vhs.title) LIKE :title', {
+        title: `%${title.toLowerCase()}%`,
+      });
     }
 
     if (description) {
-      query.andWhere('vhs.description LIKE :description', {
-        description: `%${description}%`,
+      query.andWhere('LOWER(vhs.description) LIKE :description', {
+        description: `%${description.toLowerCase()}%`,
       });
     }
 
     if (genre) {
-      query.andWhere('vhs.genre LIKE :genre', { genre: `%${genre}%` });
+      query.andWhere('LOWER(vhs.genre) LIKE :genre', {
+        genre: `%${genre.toLowerCase()}%`,
+      });
     }
 
     if (isAvailable === true) {
