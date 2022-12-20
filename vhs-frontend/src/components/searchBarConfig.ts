@@ -6,7 +6,7 @@ export const searchBarDefaultValues: SearchFormInput = {
 };
 
 export const searchFormSchema = z.object({
-  queryType: z.union([z.literal('title'), z.literal('description'), z.literal('genre')]),
+  queryType: z.enum(['title', 'description', 'genre']),
   queryValue: z.string().optional(),
 });
 
