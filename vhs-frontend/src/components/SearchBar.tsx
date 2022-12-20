@@ -1,8 +1,9 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { SearchFormInput, searchBarDefaultValues } from './searchBarConfig';
+import { SearchFormInput, searchBarDefaultValues, searchFormSchema } from './searchBarConfig';
 
 interface Props {
-  setQuery: (value: string) => void;
+  setQuery: (value: SearchFormInput) => void;
   onSubmit: (data: SearchFormInput) => void;
 }
 
@@ -13,6 +14,7 @@ export const SearchBar = ({ setQuery, onSubmit }: Props) => {
     reset,
     formState: { errors },
   } = useForm<SearchFormInput>({
+    resolver: zodResolver(searchFormSchema),
     defaultValues: searchBarDefaultValues,
   });
 
@@ -25,22 +27,22 @@ export const SearchBar = ({ setQuery, onSubmit }: Props) => {
           <option value="genre">Genre</option>
         </select>
         <input
-          {...register('queryText', { required: true })}
+          {...register('queryValue', { required: true })}
           type="search"
           placeholder={'Start typing to search'}
         />
 
-        <button type="submit">Search</button>
+        <button>Search</button>
         <button
           type="reset"
           onClick={() => {
-            reset({ queryText: '' });
-            setQuery('');
+            reset({ queryValue: '' });
+            setQuery({ queryType: 'title', queryValue: '' });
           }}
         >
           Reset
         </button>
-        {errors.queryText && <span>You must type something</span>}
+        {errors.queryValue && <span>{errors.queryValue.message}</span>}
       </form>
     </div>
   );

@@ -9,15 +9,17 @@ import { SearchFormInput } from '../components/searchBarConfig';
 
 export const Explore = () => {
   const [vhsList, setVhsList] = useState<VHS[]>([]);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState<SearchFormInput>({ queryType: 'title', queryValue: '' });
 
   useEffect(() => {
     getVhsList(query);
   }, [query]);
 
-  const getVhsList = async (query?: string) => {
+  const getVhsList = async (query: SearchFormInput) => {
     try {
-      const response = await axios.get(`/api/vhs${query}`);
+      const response = await axios.get(`/api/vhs`, {
+        params: { [query.queryType]: query.queryValue ? query.queryValue : undefined },
+      });
       setVhsList(response.data);
     } catch (error) {
       console.error(error);
@@ -25,8 +27,8 @@ export const Explore = () => {
   };
 
   const onSubmit: (data: SearchFormInput) => void = (data) => {
-    const query = `?${data.queryType}=${data.queryText}`;
-    setQuery(query);
+    // const query = `?${data.queryType}=${data.queryText}`;
+    setQuery({ queryType: data.queryType, queryValue: data.queryValue });
   };
 
   return (
