@@ -1,49 +1,50 @@
-import { VHS } from "../types";
+import React, { Dispatch, SetStateAction } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { SearchFormInput, searchBarDefaultValues, searchFormSchema } from './searchBarConfig';
 
-type Props = {
-  searchBase: VHS[];
-  setFilteredList: Function;
-  setSearching: Function;
-};
+interface Props {
+  setQuery: Dispatch<SetStateAction<SearchFormInput>>;
+  onSubmit: (data: SearchFormInput) => void;
+}
 
-export const SearchBar = ({
-  searchBase,
-  setFilteredList,
-  setSearching,
-}: Props) => {
-  // const [searchQuery, setSearchQuery] = useState('');
-
-  //TODO: move this to explore
-  const handleChange = (event: any) => {
-    // setSearchQuery(event.target.value)
-    // console.log(searchQuery)
-    if (event.target.value !== "") {
-      setSearching(true);
-      setFilteredList(
-        searchBase.filter((item) => {
-          if (
-            item.title
-              .toLowerCase()
-              .includes(event.target.value.toLowerCase()) ||
-            item.description
-              .toLowerCase()
-              .includes(event.target.value.toLowerCase())
-          ) {
-            return item;
-          }
-
-          return false;
-        })
-      );
-    } else if (event.target.value === "") setSearching(false);
-  };
+export const SearchBar = ({ setQuery, onSubmit }: Props) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<SearchFormInput>({
+    resolver: zodResolver(searchFormSchema),
+    defaultValues: searchBarDefaultValues,
+  });
 
   return (
     <div>
-      <input
-        type="search"
-        onChange={handleChange}
-        placeholder={"Start typing to search"}></input>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <select {...register('queryType')}>
+          <option value="title">Title</option>
+          <option value="description">Description</option>
+          <option value="genre">Genre</option>
+        </select>
+        <input
+          {...register('queryValue', { required: true })}
+          type="search"
+          placeholder={'Start typing to search'}
+        />
+
+        <button>Search</button>
+        <button
+          type="reset"
+          onClick={() => {
+            reset({ queryValue: '' });
+            setQuery({ queryType: 'title', queryValue: '' });
+          }}
+        >
+          Reset
+        </button>
+        {errors.queryValue && <span>{errors.queryValue.message}</span>}
+      </form>
     </div>
   );
 };
