@@ -18,7 +18,7 @@ export const Explore = () => {
   const getVhsList = async (query: SearchFormInput) => {
     try {
       const response = await axios.get(`/api/vhs`, {
-        params: { [query.queryType]: query.queryValue ? query.queryValue : undefined },
+        params: { [query.queryType]: query.queryValue || undefined },
       });
       setVhsList(response.data);
     } catch (error) {
@@ -27,7 +27,6 @@ export const Explore = () => {
   };
 
   const onSubmit: (data: SearchFormInput) => void = (data) => {
-    // const query = `?${data.queryType}=${data.queryText}`;
     setQuery({ queryType: data.queryType, queryValue: data.queryValue });
   };
 
