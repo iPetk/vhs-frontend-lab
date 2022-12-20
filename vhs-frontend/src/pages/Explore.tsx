@@ -5,6 +5,7 @@ import { VhsThumbnail } from '../components/VHSThumbnail';
 import { SearchBar } from '../components/SearchBar';
 // @ts-ignore
 import placeholder from '../assets/placeholder.jpg';
+import { SearchFormInput } from '../components/searchBarConfig';
 
 export const Explore = () => {
   const [vhsList, setVhsList] = useState<VHS[]>([]);
@@ -22,9 +23,15 @@ export const Explore = () => {
       console.error(error);
     }
   };
+
+  const onSubmit: (data: SearchFormInput) => void = (data) => {
+    const query = `?${data.queryType}=${data.queryText}`;
+    setQuery(query);
+  };
+
   return (
     <div>
-      <SearchBar setQuery={setQuery} />
+      <SearchBar setQuery={setQuery} onSubmit={onSubmit} />
 
       {vhsList.map(
         (item) =>

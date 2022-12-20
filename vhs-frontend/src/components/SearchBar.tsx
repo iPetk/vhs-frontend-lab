@@ -1,51 +1,46 @@
-import { FormEvent, useState, ChangeEvent } from 'react';
+import { useForm } from 'react-hook-form';
+import { SearchFormInput, searchBarDefaultValues } from './searchBarConfig';
 
 interface Props {
   setQuery: (value: string) => void;
+  onSubmit: (data: SearchFormInput) => void;
 }
-export const SearchBar = ({ setQuery }: Props) => {
-  const [inputVal, setInputVal] = useState('');
-  const [queryType, setQueryType] = useState('title');
 
-  const changeType = (e: ChangeEvent<HTMLSelectElement>) => {
-    setQueryType(e.target.value);
-  };
-
-  const changeText = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputVal(e.target.value);
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    const query = `?${queryType}=${inputVal}`;
-    setQuery(query);
-  };
-
-  const reset = () => {
-    setInputVal('');
-    setQuery('');
-  };
+export const SearchBar = ({ setQuery, onSubmit }: Props) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<SearchFormInput>({
+    defaultValues: searchBarDefaultValues,
+  });
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <select onChange={changeType}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <select {...register('queryType')}>
           <option value="title">Title</option>
           <option value="description">Description</option>
           <option value="genre">Genre</option>
         </select>
         <input
+          {...register('queryText', { required: true })}
           type="search"
           placeholder={'Start typing to search'}
-          onChange={changeText}
-          value={inputVal}
-        ></input>
-        <button type="submit" disabled={!inputVal}>
-          Search
-        </button>
-        <button type="button" onClick={reset}>
+        />
+
+        <button type="submit">Search</button>
+        <button
+          type="reset"
+          onClick={() => {
+            reset({ queryText: '' });
+            setQuery('');
+          }}
+        >
           Reset
         </button>
+        {errors.queryText && <span>You must type something</span>}
       </form>
     </div>
   );
