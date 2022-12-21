@@ -1,26 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { HeaderLinks } from './HeaderLinks';
 import './header.css';
 //@ts-ignore
 import blast from '../assets/BLAST.svg';
 //@ts-ignore
 import hamburger from '../assets/hamburger.svg';
-
-const Links = () => {
-  return (
-    <>
-      <Link to="/" style={{ color: 'var(--color-orange)' }}>
-        Home
-      </Link>
-      <Link to="/explore" style={{ color: 'var(--color-yellow)' }}>
-        Discovery
-      </Link>
-      <Link to="/create" style={{ color: 'var(--color-lilac)' }}>
-        Add VHS
-      </Link>
-    </>
-  );
-};
 
 export const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -35,7 +20,7 @@ export const Header = () => {
         </div>
 
         <div className="header-links">
-          <Links />
+          <HeaderLinks />
         </div>
       </div>
       <div className="nav-button">
@@ -46,7 +31,7 @@ export const Header = () => {
         {toggleMenu && (
           <div className="header-menu-container">
             <div className="header-menu-container-links">
-              <Links />
+              <HeaderLinks />
             </div>
             <div className="header-menu-container-button">
               <button type="button">Log out</button>
