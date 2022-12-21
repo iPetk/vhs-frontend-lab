@@ -4,7 +4,7 @@ import { VHS } from '../types';
 import { VhsThumbnail } from '../components/VHSThumbnail';
 import { SearchBar } from '../components/SearchBar';
 // @ts-ignore
-import placeholder from '../assets/placeholder.jpg';
+import placeholder from '../assets/placeholder.svg';
 import { SearchFormInput } from '../components/searchBarConfig';
 
 export const Explore = () => {

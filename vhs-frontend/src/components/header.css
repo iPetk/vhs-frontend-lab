@@ -1,0 +1,131 @@
+nav{
+  background-color: var(--color-bg0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 4rem;
+}
+
+.header{
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header-img img{
+  height: 2.5rem;
+}
+
+.header-img{
+  margin-right: 2rem;
+}
+
+.header-menu{
+  display: none;
+  position: relative;
+}
+
+.header-links {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-links a, .header-menu-container-links a{
+  color: #fff;
+  font-family: var(--font-family-display);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 2rem;
+
+
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+nav button {
+  padding:  0.5rem;
+  color: var(--color-red);
+  font-family: var(--font-family-display);
+  background: none;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 20px;
+  border-radius: 5px;
+  border: 1px solid var(--color-red);
+  outline: none;
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+nav button:hover{
+  background-color: var(--color-red);
+  color: var(--color-bg0);
+}
+
+.header-menu-container{
+  display: flex;
+  justify-content: space-between;
+  align-items:flex-end;
+  flex-direction: column;
+  text-align: end;
+  background: var(--color-bg0);
+  padding: 2rem;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  margin-top: 1rem;
+  min-width: 210px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+@media screen and (max-width: 992px){
+
+
+}
+
+@media screen and (max-width: 768px){
+  nav{
+    padding: 1rem 2rem;
+  }
+  .header-img{
+    margin-right: 1.5rem;
+  }
+  .header-img img{
+    height: 2rem;
+  }
+}
+
+
+
+@media screen and (max-width: 600px){
+
+  .nav-button{
+    display: none;
+  }
+
+  .header-menu{
+    display: flex;
+  }
+
+  .header-menu img{
+    width: 1.5rem;
+  }
+
+  .header-links{
+    display: none;
+  }
+  .header-menu-container-links{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-menu-container-button{
+    display: block;
+    margin-top: 2rem;
+  }
+
+}
