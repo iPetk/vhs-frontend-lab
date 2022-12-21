@@ -29,7 +29,9 @@ export const Header = () => {
     <nav>
       <div className="header">
         <div className="header-img">
-          <img src={blast} alt="logo" />
+          <Link to="/">
+            <img src={blast} alt="logo" />
+          </Link>
         </div>
 
         <div className="header-links">
@@ -40,7 +42,7 @@ export const Header = () => {
         <button type="button">Log out</button>
       </div>
       <div className="header-menu">
-        <img src={hamburger} onClick={() => setToggleMenu(!toggleMenu)} />
+        <img src={hamburger} onClick={() => setToggleMenu(!toggleMenu)} alt="menu" />
         {toggleMenu && (
           <div className="header-menu-container">
             <div className="header-menu-container-links">

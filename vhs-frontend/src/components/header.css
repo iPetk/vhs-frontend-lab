@@ -39,7 +39,6 @@ nav{
   font-size: 1rem;
   line-height: 2rem;
 
-
   margin: 0 1rem;
   cursor: pointer;
 }
@@ -78,28 +77,21 @@ nav button:hover{
   margin-top: 1rem;
   min-width: 210px;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-
-}
-
-@media screen and (max-width: 992px){
-
-
 }
 
 @media screen and (max-width: 768px){
   nav{
     padding: 1rem 2rem;
   }
+
   .header-img{
     margin-right: 1.5rem;
   }
+
   .header-img img{
     height: 2rem;
   }
 }
-
-
 
 @media screen and (max-width: 600px){
 
@@ -108,7 +100,7 @@ nav button:hover{
   }
 
   .header-menu{
-    display: flex;
+    display: block;
   }
 
   .header-menu img{
@@ -118,6 +110,7 @@ nav button:hover{
   .header-links{
     display: none;
   }
+
   .header-menu-container-links{
     display: flex;
     flex-direction: column;
@@ -127,5 +120,4 @@ nav button:hover{
     display: block;
     margin-top: 2rem;
   }
-
 }
