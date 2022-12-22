@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -6,12 +6,12 @@
   font-family: var(--font-family-body);
 }
 
-body{
+body {
   background: var(--color-bg1);
   color: white
 }
 
-a{
+a {
   color: unset;
   text-decoration: none;
 }

@@ -1,4 +1,4 @@
-nav{
+nav {
   background-color: var(--color-bg0);
   display: flex;
   flex-direction: row;
@@ -7,32 +7,32 @@ nav{
   padding: 1rem 4rem;
 }
 
-.header{
+.header {
   flex: 1;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.header-img img{
+.header-img img {
   height: 2.5rem;
 }
 
-.header-img{
+.header-img {
   margin-right: 2rem;
 }
 
-.header-menu{
+.header-menu {
   display: none;
   position: relative;
 }
 
-.header-links {
+.header-links  {
   display: flex;
   flex-direction: row;
 }
 
-.header-links a, .header-menu-container-links a{
+.header-links a, .header-menu-container-links a {
   color: #fff;
   font-family: var(--font-family-display);
   font-weight: 500;
@@ -43,7 +43,7 @@ nav{
   cursor: pointer;
 }
 
-nav button {
+nav button  {
   padding:  0.5rem;
   color: var(--color-red);
   font-family: var(--font-family-display);
@@ -58,12 +58,12 @@ nav button {
   transition: color 0.2s, background-color 0.2s;
 }
 
-nav button:hover{
+nav button:hover {
   background-color: var(--color-red);
   color: var(--color-bg0);
 }
 
-.header-menu-container{
+.header-menu-container {
   display: flex;
   justify-content: space-between;
   align-items:flex-end;
@@ -79,44 +79,44 @@ nav button:hover{
   border-radius: 5px;
 }
 
-@media screen and (max-width: 768px){
-  nav{
+@media screen and (max-width: 768px) {
+  nav {
     padding: 1rem 2rem;
   }
 
-  .header-img{
+  .header-img {
     margin-right: 1.5rem;
   }
 
-  .header-img img{
+  .header-img img {
     height: 2rem;
   }
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
 
-  .nav-button{
+  .nav-button {
     display: none;
   }
 
-  .header-menu{
+  .header-menu {
     display: block;
   }
 
-  .header-menu img{
+  .header-menu img {
     width: 1.5rem;
   }
 
-  .header-links{
+  .header-links {
     display: none;
   }
 
-  .header-menu-container-links{
+  .header-menu-container-links {
     display: flex;
     flex-direction: column;
   }
 
-  .header-menu-container-button{
+  .header-menu-container-button {
     display: block;
     margin-top: 2rem;
   }
