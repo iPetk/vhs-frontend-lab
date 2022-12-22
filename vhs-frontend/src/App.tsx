@@ -16,11 +16,16 @@ export const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/not-found" element={<NotFound />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/:vhsId" element={<VHSDetails />} />
-          <Route path="/edit" element={<Edit />} />
-          <Route path="/create" element={<CreateNew />} />
+
+          <Route path="vhs">
+            <Route index element={<Explore />} />
+            <Route path=":vhsId" element={<VHSDetails />} />
+            <Route path="edit" element={<Edit />} />
+            <Route path="create" element={<CreateNew />} />
+          </Route>
+
+          <Route path="not-found" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </>

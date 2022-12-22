@@ -6,7 +6,7 @@ export const HeaderLinks = () => {
       <Link to="/" style={{ color: 'var(--color-orange)' }}>
         Home
       </Link>
-      <Link to="/explore" style={{ color: 'var(--color-yellow)' }}>
+      <Link to="/vhs" style={{ color: 'var(--color-yellow)' }}>
         Discovery
       </Link>
       <Link to="/create" style={{ color: 'var(--color-lilac)' }}>
