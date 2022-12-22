@@ -16,6 +16,7 @@ export const Edit = () => {
     try {
       const response = await axios.patch(`/api/vhs/${VHS.id}`, data);
       console.log(response);
+      navigate(`/vhs/${VHS.id}`);
     } catch (error) {
       console.error(error);
     }
