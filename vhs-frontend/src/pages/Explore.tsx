@@ -39,7 +39,7 @@ export const Explore = () => {
           item.id && (
             <VhsThumbnail
               key={item.id}
-              image={item.thumbnail ? item.thumbnail.replace(/\\/g, '/') : placeholder}
+              image={item.thumbnail || placeholder}
               vhsId={item.id}
               vhsTitle={item.title}
             />
