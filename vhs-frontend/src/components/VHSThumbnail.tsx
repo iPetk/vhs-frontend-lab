@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 type Props = {
   image?: string;
@@ -8,10 +8,10 @@ type Props = {
 
 export const VhsThumbnail = ({ image, vhsId, vhsTitle }: Props) => {
   return (
-    <div style={{ border: "1px solid black", width: "300px" }}>
-      <Link to={`/${vhsId}`}>
+    <div style={{ border: '1px solid black', width: '300px' }}>
+      <Link to={`${vhsId}`}>
         <div>
-          <img src={image} alt={vhsTitle} style={{ maxWidth: "200px" }} />
+          <img src={image} alt={vhsTitle} style={{ maxWidth: '200px' }} />
           <p>{vhsTitle}</p>
         </div>
       </Link>

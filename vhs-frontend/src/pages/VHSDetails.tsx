@@ -42,12 +42,9 @@ export const VHSDetails = () => {
           <div>Genre: {vhsInfo.genre}</div>
           <div>Release year: {vhsInfo.releasedAt}</div>
           <div>Rental price: {vhsInfo.rentalPrice} coins</div>
-          <img
-            src={vhsInfo.thumbnail ? vhsInfo.thumbnail.replace(/\\/g, '/') : placeholder}
-            alt=""
-          />
+          <img src={vhsInfo.thumbnail ? `/${vhsInfo.thumbnail}` : placeholder} alt="" />
 
-          <Link to="/edit" state={vhsInfo}>
+          <Link to="/vhs/edit" state={vhsInfo}>
             <button>EDIT</button>
           </Link>
         </div>
