@@ -1,15 +1,15 @@
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { VhsForm } from "../components/form/VhsForm";
-import { createData } from "../components/form/CreateData";
-import { VhsFormType } from "../types";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { VhsForm } from '../components/form/VhsForm';
+import { createData } from '../components/form/CreateData';
+import { VhsFormType } from '../types';
 
 export const CreateNew = () => {
-  const exploreLink = useNavigate();
+  const navigate = useNavigate();
 
   const createNewEntry = async (data: FormData) => {
     try {
-      const response = await axios.post("/api/vhs", data);
+      const response = await axios.post('/api/vhs', data);
       console.log(response);
     } catch (error) {
       console.error(error);
@@ -19,7 +19,7 @@ export const CreateNew = () => {
   const submitForm = (data: VhsFormType) => {
     console.log(data);
     createNewEntry(createData(data));
-    exploreLink("/explore");
+    navigate('/explore');
   };
 
   return (

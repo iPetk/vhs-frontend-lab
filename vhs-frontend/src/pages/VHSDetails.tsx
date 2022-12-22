@@ -13,7 +13,7 @@ export const VHSDetails = () => {
     return `${hours} hours ${minutes} minutes`;
   };
   const { vhsId } = useParams();
-  const notFoundLink = useNavigate();
+  const navigate = useNavigate();
 
   const [vhsInfo, setVhsInfo] = useState<VHS>();
 
@@ -23,7 +23,7 @@ export const VHSDetails = () => {
       setVhsInfo(response.data);
     } catch (err) {
       console.log(err);
-      notFoundLink('/notfound');
+      navigate('/not-found');
     }
   };
 
