@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { VHS } from "../types";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { VHS } from '../types';
+import axios from 'axios';
 // @ts-ignore
-import placeholder from "../assets/placeholder.jpg";
+import placeholder from '../assets/placeholder.svg';
 
 export const VHSDetails = () => {
   const convertDuration = (duration: number) => {
@@ -13,7 +13,7 @@ export const VHSDetails = () => {
     return `${hours} hours ${minutes} minutes`;
   };
   const { vhsId } = useParams();
-  const notFoundLink = useNavigate();
+  const navigate = useNavigate();
 
   const [vhsInfo, setVhsInfo] = useState<VHS>();
 
@@ -23,7 +23,7 @@ export const VHSDetails = () => {
       setVhsInfo(response.data);
     } catch (err) {
       console.log(err);
-      notFoundLink("/notfound");
+      navigate('/not-found');
     }
   };
 
@@ -43,11 +43,7 @@ export const VHSDetails = () => {
           <div>Release year: {vhsInfo.releasedAt}</div>
           <div>Rental price: {vhsInfo.rentalPrice} coins</div>
           <img
-            src={
-              vhsInfo.thumbnail
-                ? vhsInfo.thumbnail.replace(/\\/g, "/")
-                : placeholder
-            }
+            src={vhsInfo.thumbnail ? vhsInfo.thumbnail.replace(/\\/g, '/') : placeholder}
             alt=""
           />
 
