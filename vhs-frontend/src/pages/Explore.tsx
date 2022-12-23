@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { VHS } from '../types';
-import { VhsThumbnail } from '../components/VHSThumbnail';
-import { SearchBar } from '../components/SearchBar';
+import { VHS } from '@types';
+import { VhsThumbnail } from '@components';
+import { SearchBar } from '@components';
 // @ts-ignore
 import placeholder from '../assets/placeholder.svg';
-import { SearchFormInput } from '../components/searchBarConfig';
+import { SearchFormInput } from '@components';
 
 export const Explore = () => {
   const [vhsList, setVhsList] = useState<VHS[]>([]);

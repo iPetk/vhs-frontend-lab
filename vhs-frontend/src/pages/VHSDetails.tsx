@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { VHS } from '../types';
+import { VHS } from '@types';
 import axios from 'axios';
 // @ts-ignore
 import placeholder from '../assets/placeholder.svg';

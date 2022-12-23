@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from "path";
 
 export default defineConfig({
   plugins: [react()],
@@ -17,5 +18,25 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/public\/images/, ''),
       }
     },
-},
+  },
+  resolve: {
+    alias: [
+      {
+      find: "@assets",
+      replacement: path.resolve(__dirname, "./src/assets"),
+    },
+    {
+      find: "@components",
+      replacement: path.resolve(__dirname, "./src/components"),
+    },
+     {
+      find: "@pages",
+      replacement: path.resolve(__dirname, "./src/pages"),
+    },
+    {
+      find: "@types",
+      replacement: path.resolve(__dirname, "./src/types"),
+    },
+    ]
+  },
 })

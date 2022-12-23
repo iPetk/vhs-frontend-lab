@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { VHS, vhsFormSchema, VhsFormType } from '../../types';
+import { VHS, vhsFormSchema, VhsFormType } from '@types';
 import { buildDefaultValues } from './defaultValuesConfig';
 
 type Props = {
