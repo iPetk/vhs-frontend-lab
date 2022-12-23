@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { VhsForm } from '@components';
-import { createData } from '@components';
+import { VhsForm, createData } from '@components';
 import { VhsFormType } from '@types';
 
 export const CreateNew = () => {

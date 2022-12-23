@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { VHS } from '@types';
 import axios from 'axios';
+import { VHS } from '@types';
 import { VhsThumbnail } from '@components';
 
 export const VHSDetails = () => {

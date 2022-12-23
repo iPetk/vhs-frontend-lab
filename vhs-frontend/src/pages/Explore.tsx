@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { VHS } from '@types';
-import { SearchBar } from '@components';
-
-import { SearchFormInput } from '@components';
-import { VhsCard } from '@components';
 import { Link } from 'react-router-dom';
+import { VHS } from '@types';
+import { SearchBar, SearchFormInput, VhsCard } from '@components';
 
 export const Explore = () => {
   const [vhsList, setVhsList] = useState<VHS[]>([]);
@@ -38,7 +35,7 @@ export const Explore = () => {
         (item) =>
           item.id && (
             <Link to={`${item.id}`} key={item.id}>
-              <VhsCard key={item.id} image={item.thumbnail} vhsId={item.id} vhsTitle={item.title} />
+              <VhsCard image={item.thumbnail} vhsId={item.id} vhsTitle={item.title} />
             </Link>
           )
       )}

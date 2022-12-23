@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { VhsForm } from '@components';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Popup } from '@components';
-import { createData } from '@components';
+import { VhsForm, Popup, createData } from '@components';
 import { VhsFormType } from '@types';
 
 export const Edit = () => {

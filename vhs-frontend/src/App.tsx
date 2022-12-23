@@ -1,11 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Header } from '@components';
-import { Home } from '@pages';
-import { Explore } from '@pages';
-import { VHSDetails } from '@pages';
-import { Edit } from '@pages';
-import { CreateNew } from '@pages';
-import { NotFound } from '@pages';
+import { Home, Explore, VHSDetails, Edit, CreateNew, NotFound } from '@pages';
 
 import './App.css';
 
