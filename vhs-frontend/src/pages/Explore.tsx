@@ -34,7 +34,7 @@ export const Explore = () => {
       {vhsList.map(
         (item) =>
           item.id && (
-            <Link to={`${item.id}`} key={item.id}>
+            <Link key={item.id} to={`${item.id}`}>
               <VhsCard image={item.thumbnail} vhsId={item.id} vhsTitle={item.title} />
             </Link>
           )
