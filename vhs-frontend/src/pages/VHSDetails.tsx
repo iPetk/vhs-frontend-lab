@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { VHS } from '@types';
 import axios from 'axios';
-// @ts-ignore
-import placeholder from '../assets/placeholder.svg';
+import { VhsThumbnail } from '@components';
 
 export const VHSDetails = () => {
   const convertDuration = (duration: number) => {
@@ -42,7 +41,7 @@ export const VHSDetails = () => {
           <div>Genre: {vhsInfo.genre}</div>
           <div>Release year: {vhsInfo.releasedAt}</div>
           <div>Rental price: {vhsInfo.rentalPrice} coins</div>
-          <img src={vhsInfo.thumbnail ? `/${vhsInfo.thumbnail}` : placeholder} alt="" />
+          <VhsThumbnail vhsTitle={vhsInfo.title} image={vhsInfo.thumbnail} />
 
           <Link to="/vhs/edit" state={vhsInfo}>
             <button>EDIT</button>
