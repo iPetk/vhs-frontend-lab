@@ -26,10 +26,10 @@ export const Edit = () => {
     try {
       const response = await axios.delete(`/api/vhs/${VHS.id}`);
       console.log(response);
-      navigate('/explore');
     } catch (error) {
       console.error(error);
-      navigate('/explore');
+    } finally {
+      navigate('/vhs');
     }
   };
 
