@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { VHS } from '../types';
-import { VhsThumbnail } from '../components/VHSThumbnail';
-import { SearchBar } from '../components/SearchBar';
-// @ts-ignore
-import placeholder from '../assets/placeholder.svg';
-import { SearchFormInput } from '../components/searchBarConfig';
+import { Link } from 'react-router-dom';
+import { VHS } from '@types';
+import { SearchBar, SearchFormInput, VhsCard } from '@components';
 
 export const Explore = () => {
   const [vhsList, setVhsList] = useState<VHS[]>([]);
@@ -37,12 +34,9 @@ export const Explore = () => {
       {vhsList.map(
         (item) =>
           item.id && (
-            <VhsThumbnail
-              key={item.id}
-              image={item.thumbnail ? `/${item.thumbnail}` : placeholder}
-              vhsId={item.id}
-              vhsTitle={item.title}
-            />
+            <Link key={item.id} to={`${item.id}`}>
+              <VhsCard image={item.thumbnail} vhsId={item.id} vhsTitle={item.title} />
+            </Link>
           )
       )}
     </div>

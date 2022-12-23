@@ -2,10 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HeaderLinks } from './HeaderLinks';
 import './header.css';
-//@ts-ignore
-import blast from '../assets/BLAST.svg';
-//@ts-ignore
-import hamburger from '../assets/hamburger.svg';
+
+import { BlastLogo, Hamburger } from '@assets';
 
 export const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -15,7 +13,7 @@ export const Header = () => {
       <div className="header">
         <div className="header-img">
           <Link to="/">
-            <img src={blast} alt="logo" />
+            <BlastLogo />
           </Link>
         </div>
 
@@ -27,7 +25,7 @@ export const Header = () => {
         <button type="button">Log out</button>
       </div>
       <div className="header-menu">
-        <img src={hamburger} onClick={() => setToggleMenu(!toggleMenu)} alt="menu" />
+        <Hamburger onClick={() => setToggleMenu(!toggleMenu)} />
         {toggleMenu && (
           <div className="header-menu-container">
             <div className="header-menu-container-links">

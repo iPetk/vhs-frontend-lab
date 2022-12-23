@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { VhsForm } from '../components/form/VhsForm';
-import { createData } from '../components/form/CreateData';
-import { VhsFormType } from '../types';
+import { VhsForm, createData } from '@components';
+import { VhsFormType } from '@types';
 
 export const CreateNew = () => {
   const navigate = useNavigate();
