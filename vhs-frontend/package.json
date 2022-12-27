@@ -36,7 +36,10 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "eslintConfig": {
     "extends": [
@@ -56,8 +59,5 @@
       "last 1 safari version"
     ]
   },
-  "packageManager": "yarn@3.3.0",
-  "lint": "eslint .",
-  "lint:fix": "eslint --fix",
-  "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+  "packageManager": "yarn@3.3.0"
 }
