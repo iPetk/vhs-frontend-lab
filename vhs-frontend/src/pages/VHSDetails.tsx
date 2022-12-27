@@ -23,7 +23,6 @@ export const VHSDetails = () => {
 
   useEffect(() => {
     fetchSingleVHS();
-    // eslint-disable-next-line
   }, []);
 
   return (
