@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { SearchFormInput, searchBarDefaultValues, searchFormSchema } from './searchBarConfig';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+import { searchBarDefaultValues, SearchFormInput, searchFormSchema } from './searchBarConfig';
 
 interface Props {
   setQuery: Dispatch<SetStateAction<SearchFormInput>>;

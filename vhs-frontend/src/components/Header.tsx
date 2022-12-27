@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HeaderLinks } from './HeaderLinks';
-import './header.css';
-
 import { BlastLogo, Hamburger } from '@assets';
+
+import { HeaderLinks } from './HeaderLinks';
+
+import './header.css';
 
 export const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);

@@ -1,5 +1,6 @@
-import { MouseEventHandler } from "react";
-import "./popup.css";
+import { MouseEventHandler } from 'react';
+
+import './popup.css';
 
 type Props = {
   text: string;
