@@ -1,8 +1,8 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { VhsForm, Popup, createData } from '@components';
+import { createData, Popup, VhsForm } from '@components';
 import { VhsFormType } from '@types';
+import axios from 'axios';
 
 export const Edit = () => {
   const VHS = useLocation().state;

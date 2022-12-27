@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { VHS } from '@types';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { VhsThumbnail } from '@components';
+import { VHS } from '@types';
 import { convertDuration } from '@utils';
+import axios from 'axios';
 
 export const VHSDetails = () => {
   const { vhsId } = useParams();
@@ -23,7 +23,6 @@ export const VHSDetails = () => {
 
   useEffect(() => {
     fetchSingleVHS();
-    // eslint-disable-next-line
   }, []);
 
   return (
