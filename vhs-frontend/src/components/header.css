@@ -27,12 +27,13 @@ nav {
   position: relative;
 }
 
-.header-links  {
+.header-links {
   display: flex;
   flex-direction: row;
 }
 
-.header-links a, .header-menu-container-links a {
+.header-links a,
+.header-menu-container-links a {
   color: #fff;
   font-family: var(--font-family-display);
   font-weight: 500;
@@ -43,8 +44,8 @@ nav {
   cursor: pointer;
 }
 
-nav button  {
-  padding:  0.5rem;
+nav button {
+  padding: 0.5rem;
   color: var(--color-red);
   font-family: var(--font-family-display);
   background: none;
@@ -66,7 +67,7 @@ nav button:hover {
 .header-menu-container {
   display: flex;
   justify-content: space-between;
-  align-items:flex-end;
+  align-items: flex-end;
   flex-direction: column;
   text-align: end;
   background: var(--color-bg0);
@@ -94,7 +95,6 @@ nav button:hover {
 }
 
 @media screen and (max-width: 600px) {
-
   .nav-button {
     display: none;
   }
