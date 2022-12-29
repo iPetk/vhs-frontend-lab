@@ -1,0 +1,13 @@
+{
+  "header": {
+    "links": {
+      "home": "Home",
+      "discover": "Discovery",
+      "addVHS": "Add VHS"
+    }
+  },
+  "sample": "Sample2",
+  "sample2": {
+    "tran": "worky"
+  }
+}
