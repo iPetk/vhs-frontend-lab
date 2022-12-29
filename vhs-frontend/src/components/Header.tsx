@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { BlastLogo, Hamburger } from '@assets';
 
@@ -7,6 +8,7 @@ import { HeaderLinks } from './HeaderLinks';
 import './header.css';
 
 export const Header = () => {
+  const { t } = useTranslation();
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
@@ -23,8 +25,9 @@ export const Header = () => {
         </div>
       </div>
       <div className="nav-button">
-        <button type="button">Log out</button>
+        <button type="button">{t('header.logOut')}</button>
       </div>
+
       <div className="header-menu">
         <Hamburger onClick={() => setToggleMenu(!toggleMenu)} />
         {toggleMenu && (
@@ -33,7 +36,7 @@ export const Header = () => {
               <HeaderLinks />
             </div>
             <div className="header-menu-container-button">
-              <button type="button">Log out</button>
+              <button type="button">{t('header.logOut')}</button>
             </div>
           </div>
         )}

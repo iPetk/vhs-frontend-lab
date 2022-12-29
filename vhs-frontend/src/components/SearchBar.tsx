@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { searchBarDefaultValues, SearchFormInput, searchFormSchema } from './searchBarConfig';
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export const SearchBar = ({ setQuery, onSubmit }: Props) => {
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -24,17 +27,17 @@ export const SearchBar = ({ setQuery, onSubmit }: Props) => {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <select {...register('queryType')}>
-          <option value="title">Title</option>
-          <option value="description">Description</option>
-          <option value="genre">Genre</option>
+          <option value="title">{t('VHS.title')}</option>
+          <option value="description">{t('VHS.description')}</option>
+          <option value="genre">{t('VHS.genre')}</option>
         </select>
         <input
           {...register('queryValue', { required: true })}
           type="search"
-          placeholder={'Start typing to search'}
+          placeholder={`${t('searchbar.placeholder')}`}
         />
 
-        <button>Search</button>
+        <button>{t('searchbar.search')}</button>
         <button
           type="reset"
           onClick={() => {
@@ -42,7 +45,7 @@ export const SearchBar = ({ setQuery, onSubmit }: Props) => {
             setQuery({ queryType: 'title', queryValue: '' });
           }}
         >
-          Reset
+          {t('searchbar.reset')}
         </button>
         {errors.queryValue && <span>{errors.queryValue.message}</span>}
       </form>

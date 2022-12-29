@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { createData, Popup, VhsForm } from '@components';
 import { VhsFormType } from '@types';
 import axios from 'axios';
 
 export const Edit = () => {
+  const { t } = useTranslation();
   const VHS = useLocation().state;
 
   const [open, setOpen] = useState(false);
@@ -38,12 +40,13 @@ export const Edit = () => {
 
   return (
     <>
-      <h1>Edit</h1>
+      <h1>{t('form.edit')}</h1>
       {
         <div>
           {open ? (
             <Popup
-              text="Are you sure you want to delete? This action is irreversible"
+              text={`${t('popups.delete.text')}`}
+              popupButtonText={`${t('popups.delete.button')}`}
               closePopup={() => setOpen(false)}
               doPopupAction={() => {
                 deleteEntry();
@@ -54,7 +57,7 @@ export const Edit = () => {
         </div>
       }
 
-      <button onClick={() => setOpen(true)}>Delete</button>
+      <button onClick={() => setOpen(true)}>{t('popups.delete.button')}</button>
 
       <VhsForm onSubmit={handleSubmit} values={VHS} />
     </>
