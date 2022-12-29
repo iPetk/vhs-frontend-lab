@@ -4,20 +4,19 @@
   --font-family-display: 'Montserrat Alternates', sans-serif;
   --font-family-body: 'Manrope', sans-serif;
 
-  --color-lilac: #AA65CA;
-  --color-purple: #5C3C6B;
-  --color-red: #BE515B; 
-  --color-orange: #DE7945;
-  --color-yellow: #E8AB46;
+  --color-lilac: #aa65ca;
+  --color-purple: #5c3c6b;
+  --color-red: #be515b;
+  --color-orange: #de7945;
+  --color-yellow: #e8ab46;
 
-  --gradient:  linear-gradient(270deg, #E8AB46 0%, #DE7945 33.33%, #BE515B 66.67%, #AA65CA 100%);
+  --gradient: linear-gradient(270deg, #e8ab46 0%, #de7945 33.33%, #be515b 66.67%, #aa65ca 100%);
 
   --color-bg0: #121212;
   --color-bg1: #171717;
   --color-bg2: #191919;
   --color-bg3: #202020;
   --color-bg4: #252525;
-  --color-bg5: #2A2A2A;
-  --color-bg6: #2E2E2E;
+  --color-bg5: #2a2a2a;
+  --color-bg6: #2e2e2e;
 }
-
