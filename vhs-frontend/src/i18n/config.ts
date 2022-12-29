@@ -9,10 +9,13 @@ export const resources = {
   },
 };
 
+export const defaultNS = 'translation';
+
 i18n.use(initReactI18next).init({
   debug: true,
   lng: 'en',
   resources,
+  defaultNS,
 });
 
 export { i18n };
