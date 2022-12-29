@@ -4,6 +4,7 @@ import { VhsThumbnail } from '@components';
 import { VHS } from '@types';
 import { convertDuration } from '@utils';
 import axios from 'axios';
+import { t } from 'i18next';
 
 export const VHSDetails = () => {
   const { vhsId } = useParams();
@@ -30,15 +31,25 @@ export const VHSDetails = () => {
       {vhsInfo && (
         <div>
           <h1>{vhsInfo.title}</h1>
-          <div>Description: {vhsInfo.description}</div>
-          <div>Duration: {convertDuration(vhsInfo.duration)}</div>
-          <div>Genre: {vhsInfo.genre}</div>
-          <div>Release year: {vhsInfo.releasedAt}</div>
-          <div>Rental price: {vhsInfo.rentalPrice} coins</div>
+          <div>
+            {t('VHS.description')}: {vhsInfo.description}
+          </div>
+          <div>
+            {t('VHS.duration')}: {convertDuration(vhsInfo.duration)}
+          </div>
+          <div>
+            {t('VHS.genre')}: {vhsInfo.genre}
+          </div>
+          <div>
+            {t('VHS.release')}: {vhsInfo.releasedAt}
+          </div>
+          <div>
+            {t('VHS.rental price')}: {vhsInfo.rentalPrice} coins
+          </div>
           <VhsThumbnail vhsTitle={vhsInfo.title} image={vhsInfo.thumbnail} />
 
           <Link to="/vhs/edit" state={vhsInfo}>
-            <button>EDIT</button>
+            <button>{t('form.edit')}</button>
           </Link>
         </div>
       )}

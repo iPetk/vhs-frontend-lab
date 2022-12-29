@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { z } from 'zod';
 
 const MAX_FILE_SIZE = 300000; //bytes
@@ -19,40 +20,40 @@ export type VHS = Omit<VhsFormType, 'thumbnail'> & {
 };
 
 export const vhsFormSchema = z.object({
-  title: z.string().min(1, 'Title is required'),
-  description: z.string().min(1, 'Description is required'),
-  genre: z.string().min(1, 'Genre is required'),
+  title: z.string().min(1, `${t('validation errors.title')}`),
+  description: z.string().min(1, `${t('validation errors.description')}`),
+  genre: z.string().min(1, `${t('validation errors.genre')}`),
   duration: z
-    .number({ invalid_type_error: 'Duration must be a number' })
+    .number({ invalid_type_error: `${t('validation errors.duration.number')}` })
     .int()
-    .positive('Duration must be greater than 0'),
+    .positive(`${t('validation errors.duration.positive')}`),
   releasedAt: z
-    .number({ invalid_type_error: 'Release date must be a number' })
+    .number({ invalid_type_error: `${t('validation errors.release.number')}` })
     .int()
-    .gte(RELEASE_YEAR_MIN, "Please check this info - film wasn't invented until the 1880s")
-    .lte(RELEASE_YEAR_MAX, 'Are you a time traveler?')
-    .nonnegative("Release year can't be negative"),
+    .gte(RELEASE_YEAR_MIN, `${t('validation errors.release.min year')}`)
+    .lte(RELEASE_YEAR_MAX, `${t('validation errors.release.max year')}`)
+    .nonnegative(`${t('validation errors.release.negative')}`),
   rentalPrice: z
-    .number({ invalid_type_error: 'Price must be a number' })
+    .number({ invalid_type_error: `${t('validation errors.rental price.number')}` })
     .int()
-    .nonnegative("Price can't be negative"),
+    .nonnegative(`${t('validation errors.rental price.positive')}`),
   rentalDuration: z
-    .number({ invalid_type_error: 'Rental duration must be a number' })
+    .number({ invalid_type_error: `${t('validation errors.rental duration.number')}` })
     .int()
-    .positive('Rental duration must be greater than 1'),
+    .positive(`${t('validation errors.rental duration.positive')}`),
   thumbnail: z
     .custom<FileList>()
     .refine((files) => {
       if (!files.length) return true;
       return files[0].size <= MAX_FILE_SIZE;
-    }, 'Max file size is 3MB.')
+    }, `${t('validation errors.thumbnail.file size')}`)
     .refine(
       (files) => {
         if (!files.length) return true;
         return ACCEPTED_IMAGE_TYPES.includes(files[0].type);
       },
       {
-        message: 'Image must be .bmp, .jpg, .jpeg, .png, .svg or .webp ',
+        message: `${t('validation errors.thumbnail.file type')}`,
       }
     )
     .optional(),

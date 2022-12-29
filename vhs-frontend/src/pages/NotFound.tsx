@@ -1,3 +1,5 @@
+import { t } from 'i18next';
+
 export const NotFound = () => {
-  return <div>NotFound</div>;
+  return <div>{t('not found')}</div>;
 };

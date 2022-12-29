@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BlastLogo, Hamburger } from '@assets';
+import { t } from 'i18next';
 
 import { HeaderLinks } from './HeaderLinks';
 
@@ -23,8 +24,9 @@ export const Header = () => {
         </div>
       </div>
       <div className="nav-button">
-        <button type="button">Log out</button>
+        <button type="button">{t('header.log out')}</button>
       </div>
+
       <div className="header-menu">
         <Hamburger onClick={() => setToggleMenu(!toggleMenu)} />
         {toggleMenu && (
@@ -33,7 +35,7 @@ export const Header = () => {
               <HeaderLinks />
             </div>
             <div className="header-menu-container-button">
-              <button type="button">Log out</button>
+              <button type="button">{t('header.log out')}</button>
             </div>
           </div>
         )}
