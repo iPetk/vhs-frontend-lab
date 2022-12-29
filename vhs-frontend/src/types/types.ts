@@ -1,4 +1,4 @@
-import { t } from 'i18next';
+import { i18n } from '@i18n';
 import { z } from 'zod';
 
 const MAX_FILE_SIZE = 300000; //bytes
@@ -20,40 +20,40 @@ export type VHS = Omit<VhsFormType, 'thumbnail'> & {
 };
 
 export const vhsFormSchema = z.object({
-  title: z.string().min(1, `${t('validation errors.title')}`),
-  description: z.string().min(1, `${t('validation errors.description')}`),
-  genre: z.string().min(1, `${t('validation errors.genre')}`),
+  title: z.string().min(1, `${i18n.t('validationErrors.title')}`),
+  description: z.string().min(1, `${i18n.t('validationErrors.description')}`),
+  genre: z.string().min(1, `${i18n.t('validationErrors.genre')}`),
   duration: z
-    .number({ invalid_type_error: `${t('validation errors.duration.number')}` })
+    .number({ invalid_type_error: `${i18n.t('validationErrors.duration.number')}` })
     .int()
-    .positive(`${t('validation errors.duration.positive')}`),
+    .positive(`${i18n.t('validationErrors.duration.positive')}`),
   releasedAt: z
-    .number({ invalid_type_error: `${t('validation errors.release.number')}` })
+    .number({ invalid_type_error: `${i18n.t('validationErrors.release.number')}` })
     .int()
-    .gte(RELEASE_YEAR_MIN, `${t('validation errors.release.min year')}`)
-    .lte(RELEASE_YEAR_MAX, `${t('validation errors.release.max year')}`)
-    .nonnegative(`${t('validation errors.release.negative')}`),
+    .gte(RELEASE_YEAR_MIN, `${i18n.t('validationErrors.release.minYear')}`)
+    .lte(RELEASE_YEAR_MAX, `${i18n.t('validationErrors.release.maxYear')}`)
+    .nonnegative(`${i18n.t('validationErrors.release.negative')}`),
   rentalPrice: z
-    .number({ invalid_type_error: `${t('validation errors.rental price.number')}` })
+    .number({ invalid_type_error: `${i18n.t('validationErrors.rentalPrice.number')}` })
     .int()
-    .nonnegative(`${t('validation errors.rental price.positive')}`),
+    .nonnegative(`${i18n.t('validationErrors.rentalPrice.positive')}`),
   rentalDuration: z
-    .number({ invalid_type_error: `${t('validation errors.rental duration.number')}` })
+    .number({ invalid_type_error: `${i18n.t('validationErrors.rentalDuration.number')}` })
     .int()
-    .positive(`${t('validation errors.rental duration.positive')}`),
+    .positive(`${i18n.t('validationErrors.rentalDuration.positive')}`),
   thumbnail: z
     .custom<FileList>()
     .refine((files) => {
       if (!files.length) return true;
       return files[0].size <= MAX_FILE_SIZE;
-    }, `${t('validation errors.thumbnail.file size')}`)
+    }, `${i18n.t('validationErrors.thumbnail.fileSize')}`)
     .refine(
       (files) => {
         if (!files.length) return true;
         return ACCEPTED_IMAGE_TYPES.includes(files[0].type);
       },
       {
-        message: `${t('validation errors.thumbnail.file type')}`,
+        message: `${i18n.t('validationErrors.thumbnail.fileType')}`,
       }
     )
     .optional(),

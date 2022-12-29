@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { VhsThumbnail } from '@components';
 import { VHS } from '@types';
 import { convertDuration } from '@utils';
 import axios from 'axios';
-import { t } from 'i18next';
 
 export const VHSDetails = () => {
+  const { t } = useTranslation();
   const { vhsId } = useParams();
   const navigate = useNavigate();
 
@@ -44,7 +45,7 @@ export const VHSDetails = () => {
             {t('VHS.release')}: {vhsInfo.releasedAt}
           </div>
           <div>
-            {t('VHS.rental price')}: {vhsInfo.rentalPrice} coins
+            {t('VHS.rentalPrice')}: {vhsInfo.rentalPrice} coins
           </div>
           <VhsThumbnail vhsTitle={vhsInfo.title} image={vhsInfo.thumbnail} />
 

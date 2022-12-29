@@ -20,7 +20,8 @@
       "@components": ["components"],
       "@pages": ["pages"],
       "@types": ["types"],
-      "@utils": ["utils"]
+      "@utils": ["utils"],
+      "@i18n": ["i18n"]
     },
     "baseUrl": "./src"
   },

@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { t } from 'i18next';
 
 import { searchBarDefaultValues, SearchFormInput, searchFormSchema } from './searchBarConfig';
 
@@ -11,6 +11,8 @@ interface Props {
 }
 
 export const SearchBar = ({ setQuery, onSubmit }: Props) => {
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,

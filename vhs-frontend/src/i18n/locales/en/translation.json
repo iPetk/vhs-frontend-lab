@@ -5,7 +5,7 @@
       "discover": "Discovery",
       "addVHS": "Add VHS"
     },
-    "log out": "Log out"
+    "logOut": "Log out"
   },
 
   "VHS": {
@@ -14,25 +14,25 @@
     "genre": "Genre",
     "duration": "Duration",
     "release": "Release year",
-    "rental price": "Rental price",
-    "rental duration": "Rental duration"
+    "rentalPrice": "Rental price",
+    "rentalDuration": "Rental duration"
   },
 
   "form": {
-    "form title": "Add new VHS entry",
+    "formTitle": "Add new VHS entry",
     "fields": {
       "title": "Movie title",
       "description": "Short description",
       "genre": "Genre",
       "duration": "Movie duration (in minutes)",
       "release": "Release year",
-      "rental price": "Rental price",
-      "rental duration": "Rental duration",
+      "rentalPrice": "Rental price",
+      "rentalDuration": "Rental duration",
       "thumbnail": "Upload thumbnail (optional)",
       "submit": "Submit",
       "delete": "Delete"
     },
-    "create new title": "Add new VHS",
+    "createNewTitle": "Add new VHS",
     "edit": "Edit"
   },
 
@@ -49,9 +49,9 @@
     }
   },
 
-  "not found": "Oops! This page can't be found",
+  "notFound": "Oops! This page can't be found",
 
-  "validation errors": {
+  "validationErrors": {
     "title": "Title is required",
     "description": "Description is required",
     "genre": "Genre is required",
@@ -61,21 +61,21 @@
     },
     "release": {
       "number": "Release date must be a number",
-      "min year": "Please check this info - film wasn't invented until the 1880s",
-      "max year": "Are you a time traveler?",
+      "minYear": "Please check this info - film wasn't invented until the 1880s",
+      "maxYear": "Are you a time traveler?",
       "negative": "Release year can't be negative"
     },
-    "rental price": {
+    "rentalPrice": {
       "number": "Rental price must be a number",
       "positive": "Rental price can't be negative"
     },
-    "rental duration": {
+    "rentalDuration": {
       "number": "Rental duration must be a number",
       "positive": "Rental duration must be greater than 1"
     },
     "thumbnail": {
-      "file size": "Max file size is 3MB",
-      "file type": "Image must be .bmp, .jpg, .jpeg, .png, .svg or .webp"
+      "fileSize": "Max file size is 3MB",
+      "fileType": "Image must be .bmp, .jpg, .jpeg, .png, .svg or .webp"
     }
   }
 }

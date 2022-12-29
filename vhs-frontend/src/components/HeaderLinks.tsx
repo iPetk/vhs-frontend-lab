@@ -1,7 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { t } from 'i18next';
 
 export const HeaderLinks = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Link to="/" style={{ color: 'var(--color-orange)' }}>

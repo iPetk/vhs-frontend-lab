@@ -1,10 +1,9 @@
 import { useForm } from 'react-hook-form';
-
+import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { VHS, vhsFormSchema, VhsFormType } from '@types';
 
 import { buildDefaultValues } from './defaultValuesConfig';
-import { t } from 'i18next';
 
 type Props = {
   values?: VHS;
@@ -12,6 +11,7 @@ type Props = {
 };
 
 export const VhsForm = ({ values, onSubmit }: Props) => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -44,11 +44,11 @@ export const VhsForm = ({ values, onSubmit }: Props) => {
         <input type="number" {...register('releasedAt', { valueAsNumber: true })} />
         {errors.releasedAt && <span>{errors.releasedAt.message}</span>}
 
-        <p>{t('form.fields.rental price')}</p>
+        <p>{t('form.fields.rentalPrice')}</p>
         <input type="number" {...register('rentalPrice', { valueAsNumber: true })} />
         {errors.rentalPrice && <span>{errors.rentalPrice.message}</span>}
 
-        <p>{t('form.fields.rental duration')}</p>
+        <p>{t('form.fields.rentalDuration')}</p>
         <input type="number" {...register('rentalDuration', { valueAsNumber: true })} />
         {errors.rentalDuration && <span>{errors.rentalDuration.message}</span>}
 
@@ -56,7 +56,7 @@ export const VhsForm = ({ values, onSubmit }: Props) => {
         <input type="file" {...register('thumbnail')} />
         {errors.thumbnail && <span>{errors.thumbnail.message}</span>}
 
-        <button value="Submit">{t('form.fields.submit')}</button>
+        <button>{t('form.fields.submit')}</button>
       </form>
     </div>
   );

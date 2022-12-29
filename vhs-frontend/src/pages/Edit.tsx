@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { createData, Popup, VhsForm } from '@components';
 import { VhsFormType } from '@types';
 import axios from 'axios';
-import { t } from 'i18next';
 
 export const Edit = () => {
+  const { t } = useTranslation();
   const VHS = useLocation().state;
 
   const [open, setOpen] = useState(false);
