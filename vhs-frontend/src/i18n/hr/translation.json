@@ -1,0 +1,9 @@
+{
+  "header": {
+    "links": {
+      "home": "Početna",
+      "all": "Svi VHS",
+      "addVHS": "Dodaj VHS"
+    }
+  }
+}
