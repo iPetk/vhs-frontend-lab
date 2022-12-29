@@ -21,3 +21,7 @@
   background-color: var(--color-bg1);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.popup-body h1 {
+  color: #121212;
+}

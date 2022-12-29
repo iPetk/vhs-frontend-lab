@@ -32,6 +32,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "latest",
     "eslint-plugin-simple-import-sort": "^8.0.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
     "prettier": "^2.8.1",
     "vite": "^4.0.1",
     "vite-plugin-svgr": "^2.4.0"
@@ -41,7 +43,8 @@
     "build": "tsc && vite build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
+    "postinstall": "cd .. && husky install vhs-frontend/.husky"
   },
   "eslintConfig": {
     "extends": [
@@ -60,6 +63,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "yarn lint",
+    "*.{js,jsx,ts,tsx,css,md,json}": "yarn format"
   },
   "packageManager": "yarn@3.3.0"
 }
