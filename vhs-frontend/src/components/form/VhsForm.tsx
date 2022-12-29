@@ -1,9 +1,10 @@
 import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { VHS, vhsFormSchema, VhsFormType } from '@types';
 
 import { buildDefaultValues } from './defaultValuesConfig';
+import { t } from 'i18next';
 
 type Props = {
   values?: VHS;
@@ -11,8 +12,6 @@ type Props = {
 };
 
 export const VhsForm = ({ values, onSubmit }: Props) => {
-  const { t } = useTranslation();
-
   const {
     register,
     handleSubmit,
