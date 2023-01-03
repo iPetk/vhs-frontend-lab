@@ -1,0 +1,36 @@
+.vhs_form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.vhs_form input,
+.vhs_form textarea {
+  background-color: var(--color-bg6);
+  color: white;
+
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 22px;
+
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.vhs_form p {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 20px;
+  color: var(--color-yellow);
+}
+
+.vhs_form-errors {
+  color: var(--color-red);
+}
+
+.vhs_form textarea {
+  resize: none;
+}

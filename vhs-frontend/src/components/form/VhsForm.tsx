@@ -5,6 +5,8 @@ import { VHS, vhsFormSchema, VhsFormType } from '@types';
 
 import { buildDefaultValues } from './defaultValuesConfig';
 
+import './vhsForm.css';
+
 type Props = {
   values?: VHS;
   onSubmit: (data: VhsFormType) => void;
@@ -22,39 +24,41 @@ export const VhsForm = ({ values, onSubmit }: Props) => {
   });
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="vhs_form-container">
+      <form onSubmit={handleSubmit(onSubmit)} className="vhs_form">
         <p>{t('form.fields.title')}</p>
         <input {...register('title')} />
-        {errors.title && <span>{errors.title.message}</span>}
+        {errors.title && <p className="vhs_form-errors">{errors.title.message}</p>}
 
         <p>{t('form.fields.description')}</p>
-        <input {...register('description')} />
-        {errors.description && <span>{errors.description.message}</span>}
+        <textarea {...register('description')} rows={3} />
+        {errors.description && <p className="vhs_form-errors">{errors.description.message}</p>}
 
         <p>{t('form.fields.genre')}</p>
         <input {...register('genre')} />
-        {errors.genre && <span>{errors.genre.message}</span>}
+        {errors.genre && <p className="vhs_form-errors">{errors.genre.message}</p>}
 
         <p>{t('form.fields.duration')}</p>
         <input type="number" {...register('duration', { valueAsNumber: true })} />
-        {errors.duration && <span>{errors.duration.message}</span>}
+        {errors.duration && <p className="vhs_form-errors">{errors.duration.message}</p>}
 
         <p>{t('form.fields.release')}</p>
         <input type="number" {...register('releasedAt', { valueAsNumber: true })} />
-        {errors.releasedAt && <span>{errors.releasedAt.message}</span>}
+        {errors.releasedAt && <p className="vhs_form-errors">{errors.releasedAt.message}</p>}
 
         <p>{t('form.fields.rentalPrice')}</p>
         <input type="number" {...register('rentalPrice', { valueAsNumber: true })} />
-        {errors.rentalPrice && <span>{errors.rentalPrice.message}</span>}
+        {errors.rentalPrice && <p className="vhs_form-errors">{errors.rentalPrice.message}</p>}
 
         <p>{t('form.fields.rentalDuration')}</p>
         <input type="number" {...register('rentalDuration', { valueAsNumber: true })} />
-        {errors.rentalDuration && <span>{errors.rentalDuration.message}</span>}
+        {errors.rentalDuration && (
+          <p className="vhs_form-errors">{errors.rentalDuration.message}</p>
+        )}
 
         <p>{t('form.fields.thumbnail')}</p>
         <input type="file" {...register('thumbnail')} />
-        {errors.thumbnail && <span>{errors.thumbnail.message}</span>}
+        {errors.thumbnail && <p className="vhs_form-errors">{errors.thumbnail.message}</p>}
 
         <button>{t('form.fields.submit')}</button>
       </form>
