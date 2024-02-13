@@ -5,6 +5,8 @@ import { createData, Popup, VhsForm } from '@components';
 import { VhsFormType } from '@types';
 import axios from 'axios';
 
+import './edit.css';
+
 export const Edit = () => {
   const { t } = useTranslation();
   const VHS = useLocation().state;
@@ -34,13 +36,15 @@ export const Edit = () => {
   };
 
   const handleSubmit = (data: VhsFormType) => {
-    console.log(data);
     editEntry(createData(data));
   };
 
   return (
-    <>
+    <div className="edit-page-layout">
       <h1>{t('form.edit')}</h1>
+      <button className="delete-entry" onClick={() => setOpen(true)}>
+        {t('popups.delete.button')}
+      </button>
       {
         <div>
           {open ? (
@@ -57,9 +61,7 @@ export const Edit = () => {
         </div>
       }
 
-      <button onClick={() => setOpen(true)}>{t('popups.delete.button')}</button>
-
       <VhsForm onSubmit={handleSubmit} values={VHS} />
-    </>
+    </div>
   );
 };

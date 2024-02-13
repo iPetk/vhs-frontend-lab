@@ -1,0 +1,16 @@
+.create-page-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 30px;
+  color: var(--color-lilac);
+
+  margin: 2rem;
+}

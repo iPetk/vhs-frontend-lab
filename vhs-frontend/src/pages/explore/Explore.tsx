@@ -4,6 +4,8 @@ import { SearchBar, SearchFormInput, VhsCard } from '@components';
 import { VHS } from '@types';
 import axios from 'axios';
 
+import './explore.css';
+
 export const Explore = () => {
   const [vhsList, setVhsList] = useState<VHS[]>([]);
   const [query, setQuery] = useState<SearchFormInput>({ queryType: 'title', queryValue: '' });
@@ -31,14 +33,16 @@ export const Explore = () => {
     <div>
       <SearchBar setQuery={setQuery} onSubmit={onSubmit} />
 
-      {vhsList.map(
-        (item) =>
-          item.id && (
-            <Link key={item.id} to={`${item.id}`}>
-              <VhsCard image={item.thumbnail} vhsTitle={item.title} />
-            </Link>
-          )
-      )}
+      <div className="vhs-card-container">
+        {vhsList.map(
+          (item) =>
+            item.id && (
+              <Link to={`${item.id}`} key={item.id}>
+                <VhsCard image={item.thumbnail} vhsTitle={item.title} />
+              </Link>
+            )
+        )}
+      </div>
     </div>
   );
 };

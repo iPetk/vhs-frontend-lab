@@ -1,4 +1,4 @@
-import { Placeholder } from '@assets';
+import placeholder from '../assets/placeholder.svg';
 
 interface Props {
   image?: string;
@@ -6,13 +6,5 @@ interface Props {
 }
 
 export const VhsThumbnail = ({ image, vhsTitle }: Props) => {
-  return (
-    <div>
-      {image ? (
-        <img src={`/${image}`} alt={vhsTitle} style={{ maxWidth: '200px' }} />
-      ) : (
-        <Placeholder />
-      )}
-    </div>
-  );
+  return image ? <img src={`/${image}`} alt={vhsTitle} /> : <img src={placeholder} />;
 };

@@ -1,0 +1,38 @@
+.details-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+  gap: 2rem;
+}
+.details-container img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.details-container .details-info {
+  color: var(--color-yellow);
+  flex-grow: 1;
+}
+.details-container .details-info button {
+  padding: 0.5rem;
+  margin: 1rem 0;
+
+  color: var(--color-lilac);
+  font-family: var(--font-display);
+  background: none;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 20px;
+
+  border-radius: 5px;
+  border: 1px solid var(--color-lilac);
+  outline: none;
+
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+.details-container .details-info button:hover {
+  color: var(--color-bg1);
+  background-color: var(--color-lilac);
+}

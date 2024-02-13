@@ -24,9 +24,7 @@ export const Header = () => {
           <HeaderLinks />
         </div>
       </div>
-      <div className="nav-button">
-        <button type="button">{t('header.logOut')}</button>
-      </div>
+      <div className="nav-button">{/* <button type="button">{t('header.logOut')}</button> */}</div>
 
       <div className="header-menu">
         <Hamburger onClick={() => setToggleMenu(!toggleMenu)} />

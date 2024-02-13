@@ -6,6 +6,8 @@ import { VHS } from '@types';
 import { convertDuration } from '@utils';
 import axios from 'axios';
 
+import './vhsDetails.css';
+
 export const VHSDetails = () => {
   const { t } = useTranslation();
   const { vhsId } = useParams();
@@ -32,26 +34,29 @@ export const VHSDetails = () => {
       {vhsInfo && (
         <div>
           <h1>{vhsInfo.title}</h1>
-          <div>
-            {t('VHS.description')}: {vhsInfo.description}
+          <div className="details-container">
+            <VhsThumbnail vhsTitle={vhsInfo.title} image={vhsInfo.thumbnail} />
+            <div className="details-info">
+              <p>
+                {t('VHS.description')}: {vhsInfo.description}
+              </p>
+              <p>
+                {t('VHS.duration')}: {convertDuration(vhsInfo.duration)}
+              </p>
+              <p>
+                {t('VHS.genre')}: {vhsInfo.genre}
+              </p>
+              <p>
+                {t('VHS.release')}: {vhsInfo.releasedAt}
+              </p>
+              <p>
+                {t('VHS.rentalPrice')}: {vhsInfo.rentalPrice} coins
+              </p>
+              <Link to="/vhs/edit" state={vhsInfo}>
+                <button>{t('form.edit')}</button>
+              </Link>
+            </div>
           </div>
-          <div>
-            {t('VHS.duration')}: {convertDuration(vhsInfo.duration)}
-          </div>
-          <div>
-            {t('VHS.genre')}: {vhsInfo.genre}
-          </div>
-          <div>
-            {t('VHS.release')}: {vhsInfo.releasedAt}
-          </div>
-          <div>
-            {t('VHS.rentalPrice')}: {vhsInfo.rentalPrice} coins
-          </div>
-          <VhsThumbnail vhsTitle={vhsInfo.title} image={vhsInfo.thumbnail} />
-
-          <Link to="/vhs/edit" state={vhsInfo}>
-            <button>{t('form.edit')}</button>
-          </Link>
         </div>
       )}
     </div>

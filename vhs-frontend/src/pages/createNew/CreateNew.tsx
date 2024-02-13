@@ -4,6 +4,8 @@ import { createData, VhsForm } from '@components';
 import { VhsFormType } from '@types';
 import axios from 'axios';
 
+import './createNew.css';
+
 export const CreateNew = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -24,9 +26,9 @@ export const CreateNew = () => {
   };
 
   return (
-    <>
+    <div className="create-page-layout">
       <h1>{t('form.createNewTitle')}</h1>
       <VhsForm onSubmit={submitForm} />
-    </>
+    </div>
   );
 };
