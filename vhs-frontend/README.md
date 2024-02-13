@@ -1,8 +1,8 @@
 # VHS frontend
 
 ### To start the application:
-run `yarn` to install dependencies
-run `yarn start` to start dev server
+- run `yarn` to install dependencies
+- run `yarn start` to start dev server
 
 ### Done so far (features):
 
